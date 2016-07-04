@@ -26,12 +26,12 @@
                   moduleName = "ZaifSwiftTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kyota/work/ZaifSwift/ZaifSwiftTests/ZaifSwiftTests.swift"
-                  timestampString = "489333841.088231"
+                  timestampString = "489337047.148086"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1393"
                   endingLineNumber = "1393"
-                  offsetFromSymbolStart = "28133">
+                  offsetFromSymbolStart = "28151">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -41,11 +41,11 @@
                   moduleName = "ZaifSwiftTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kyota/work/ZaifSwift/ZaifSwiftTests/ZaifSwiftTests.swift"
-                  timestampString = "489333841.088489"
+                  timestampString = "489337047.148336"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "1394"
-                  endingLineNumber = "1394"
+                  startingLineNumber = "1393"
+                  endingLineNumber = "1393"
                   offsetFromSymbolStart = "263">
                </Location>
             </Locations>
@@ -64,6 +64,150 @@
             startingLineNumber = "1394"
             endingLineNumber = "1394"
             landmarkName = "testHistory()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ZaifSwiftTests/ZaifSwiftTests.swift"
+            timestampString = "489336356.07474"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1482"
+            endingLineNumber = "1482"
+            landmarkName = "testTicker()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ZaifSwiftTests/ZaifSwiftTests.swift"
+            timestampString = "489336963.995792"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1486"
+            endingLineNumber = "1486"
+            landmarkName = "testTicker()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ZaifSwiftTests/ZaifSwiftTests.swift"
+            timestampString = "489336963.995792"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1495"
+            endingLineNumber = "1495"
+            landmarkName = "testTicker()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ZaifSwift/Resource.swift"
+            timestampString = "489336407.019447"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
+            landmarkName = "get(_:callback:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static ZaifSwiftTests.PublicResource.((get in _4C4B5B9E6597A86E5E8A12CF3C4AD6D5) (Swift.String, callback : (err : Swift.Optional&lt;ZaifSwiftTests.ZSError&gt;, res : Swift.Optional&lt;SwiftyJSON.JSON&gt;) -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "ZaifSwiftTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kyota/work/ZaifSwift/ZaifSwift/Resource.swift"
+                  timestampString = "489336657.629971"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "189"
+                  endingLineNumber = "189"
+                  offsetFromSymbolStart = "220">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static ZaifSwift.PublicResource.((get in _984B54BC520B91B545368B6F6338B3F7) (Swift.String, callback : (err : Swift.Optional&lt;ZaifSwift.ZSError&gt;, res : Swift.Optional&lt;SwiftyJSON.JSON&gt;) -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "ZaifSwift"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kyota/work/ZaifSwift/ZaifSwift/Resource.swift"
+                  timestampString = "489336657.630442"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "189"
+                  endingLineNumber = "189"
+                  offsetFromSymbolStart = "220">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ZaifSwiftTests/ZaifSwiftTests.swift"
+            timestampString = "489336963.995792"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1498"
+            endingLineNumber = "1498"
+            landmarkName = "testTicker()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ZaifSwiftTests/ZaifSwiftTests.swift"
+            timestampString = "489336963.995792"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1512"
+            endingLineNumber = "1512"
+            landmarkName = "testTicker()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ZaifSwiftTests/ZaifSwiftTests.swift"
+            timestampString = "489336963.995792"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1524"
+            endingLineNumber = "1524"
+            landmarkName = "testTicker()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

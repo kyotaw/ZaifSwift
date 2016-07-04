@@ -1400,6 +1400,8 @@ class ZaifSwiftTests: XCTestCase {
         }
         self.waitForExpectationsWithTimeout(5.0, handler: nil)
         
+        usleep(200)
+        
         // query for btc_jpy. desc order
         let btcQueryExpectation2 = self.expectationWithDescription("query for btc_jpy")
         let btcQuery2 = HistoryQuery(currencyPair: .BTC_JPY, order: .DESC)
@@ -1412,6 +1414,8 @@ class ZaifSwiftTests: XCTestCase {
             btcQueryExpectation2.fulfill()
         }
         self.waitForExpectationsWithTimeout(5.0, handler: nil)
+        
+        usleep(200)
         
         // query for mona_jpy. asc order
         let monaQueryExpectation = self.expectationWithDescription("query for mona_jpy")
@@ -1426,6 +1430,8 @@ class ZaifSwiftTests: XCTestCase {
         }
         self.waitForExpectationsWithTimeout(5.0, handler: nil)
         
+        usleep(200)
+        
         // query for mona_jpy. desc order
         let monaQueryExpectation2 = self.expectationWithDescription("query for mona_jpy")
         let monaQuery2 = HistoryQuery(currencyPair: .MONA_JPY, order: .DESC)
@@ -1438,6 +1444,8 @@ class ZaifSwiftTests: XCTestCase {
             monaQueryExpectation2.fulfill()
         }
         self.waitForExpectationsWithTimeout(5.0, handler: nil)
+        
+        usleep(200)
         
         // query for mona_btc. asc order
         let monaBtcQueryExpectation = self.expectationWithDescription("query for mona_btc")
@@ -1452,6 +1460,8 @@ class ZaifSwiftTests: XCTestCase {
         }
         self.waitForExpectationsWithTimeout(5.0, handler: nil)
         
+        usleep(200)
+        
         // query for mona_btc. desc order
         let monaBtcQueryExpectation2 = self.expectationWithDescription("query for mona_btc")
         let monaBtcQuery2 = HistoryQuery(currencyPair: .MONA_BTC, order: .DESC)
@@ -1464,6 +1474,62 @@ class ZaifSwiftTests: XCTestCase {
             monaBtcQueryExpectation2.fulfill()
         }
         self.waitForExpectationsWithTimeout(5.0, handler: nil)
+    }
+    
+    func testTicker() {
+        // btc_jpy
+        let btcTicker = self.expectationWithDescription("ticker for btc_jpy")
+        PublicApi.ticker(.BTC_JPY) { (err, res) in
+            print(res)
+            XCTAssertNil(err)
+            XCTAssertNotNil(res)
+            let hasEntry = res?.count > 0
+            XCTAssertTrue(hasEntry)
+            btcTicker.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5.0, handler: nil)
+        
+        usleep(200)
+        
+        // mona_jpy
+        let monaTicker = self.expectationWithDescription("ticker for mona_jpy")
+        PublicApi.ticker(.MONA_JPY) { (err, res) in
+            print(res)
+            XCTAssertNil(err)
+            XCTAssertNotNil(res)
+            let hasEntry = res?.count > 0
+            XCTAssertTrue(hasEntry)
+            monaTicker.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5.0, handler: nil)
+        
+        usleep(200)
+        
+        // mona_btc
+        let monaBtcTicker = self.expectationWithDescription("ticker for mona_btc")
+        PublicApi.ticker(.MONA_BTC) { (err, res) in
+            print(res)
+            XCTAssertNil(err)
+            XCTAssertNotNil(res)
+            let hasEntry = res?.count > 0
+            XCTAssertTrue(hasEntry)
+            monaBtcTicker.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5.0, handler: nil)
+        
+        // xem_jpy
+        let xemTicker = self.expectationWithDescription("ticker for xem_jpy")
+        PublicApi.ticker(.XEM_JPY) { (err, res) in
+            print(res)
+            XCTAssertNil(err)
+            XCTAssertNotNil(res)
+            let hasEntry = res?.count > 0
+            XCTAssertTrue(hasEntry)
+            xemTicker.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5.0, handler: nil)
+        
+        usleep(200)
     }
     
     

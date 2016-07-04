@@ -1,6 +1,6 @@
 //
 //  ZaifSwift.swift
-//  Zaifoo
+//  ZaifSwift
 //
 //  Created by 渡部郷太 on 6/24/16.
 //  Copyright © 2016 watanabe kyota. All rights reserved.
@@ -68,14 +68,10 @@ public class PrivateApi {
 }
 
 public class PublicApi {
-    
-    public class Ticker {
-        
-        public static func get(currencyPair: CurrencyPair, callback: ZSCallback) {
-            PublicResource.getTick(currencyPair, callback: callback)
-        }
+
+    public static func ticker(currencyPair: CurrencyPair, callback: ZSCallback) {
+        PublicResource.ticker(currencyPair, callback: callback)
     }
-    
 }
 
 internal struct ApiKeys {

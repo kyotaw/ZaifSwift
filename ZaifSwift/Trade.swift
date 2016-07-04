@@ -1,6 +1,6 @@
 //
 //  Order.swift
-//  Zaifoo
+//  ZaifSwift
 //
 //  Created by 渡部郷太 on 6/26/16.
 //  Copyright © 2016 watanabe kyota. All rights reserved.

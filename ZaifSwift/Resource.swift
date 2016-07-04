@@ -1,6 +1,6 @@
 //
 //  Resource.swift
-//  Zaifoo
+//  ZaifSwift
 //
 //  Created by 渡部郷太 on 6/24/16.
 //  Copyright © 2016 watanabe kyota. All rights reserved.
@@ -178,9 +178,12 @@ class PrivateResource {
 
 
 class PublicResource {
-    internal static func getTick(currencyPair: CurrencyPair, callback: ZSCallback) {
+    internal static func ticker(currencyPair: CurrencyPair, callback: ZSCallback) {
         let url = [PublicResource.url, "ticker", currencyPair.rawValue].joinWithSeparator("/")
+        self.get(url, callback: callback)
+    }
 
+    private static func get(url: String, callback: ((err: ZSError?, res: JSON?) -> Void)) {
         Alamofire.request(.GET, url).responseJSON() { response in
             switch response.result {
             case .Failure(let error):
@@ -189,7 +192,6 @@ class PublicResource {
             case .Success:
                 let data = JSON(response.result.value! as AnyObject)
                 callback(err: nil, res: data)
-            
             }
         }
     }
