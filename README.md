@@ -86,6 +86,30 @@ let sellMonaBtcOrder = SellMonaForBtcOrder(price: 6.0, amount: 1)
 privateApi.trade(sellMonaBtcOrder)
 ```
 * trade_history
+
+```swift
+let query = HistoryQuery(currencyPair: .BTC_JPY, order: .ASC, from: 0, count: 10)
+api.tradeHistory(btcQuery) { (err, res) in
+  print(res)
+}
+/*
+Optional({
+  "return" : {
+    "6366798" : {
+      "currency_pair" : "btc_jpy",
+      "action" : "ask",
+      "amount" : 0.017,
+      "your_action" : "bid",
+      "price" : 75500,
+      "bonus" : 0.1,
+      "fee" : 0,
+      "fee_amount" : 0,
+      "timestamp" : "1465831143",
+      "comment" : ""
+    },
+*/    
+```
+
 * active_orders
 * cancel_order
 * withdraw
