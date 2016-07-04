@@ -15,12 +15,14 @@ public enum Currency : String {
     case BTC = "btc"
     case JPY = "jpy"
     case MONA = "mona"
+    case XEM = "xem"
 }
 
 public enum CurrencyPair : String {
     case BTC_JPY = "btc_jpy"
     case MONA_JPY = "mona_jpy"
     case MONA_BTC = "mona_btc"
+    case XEM_JPY = "xem_jpy"
 }
 
 public enum OrderAction : String {

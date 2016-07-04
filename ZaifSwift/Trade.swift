@@ -83,7 +83,7 @@ public class Trade {
 
 
 public class Order {
-    private init(currencyPair: CurrencyPair, action: OrderAction, price: Double, amount: Double, limit: Double?=nil) {
+    public init(currencyPair: CurrencyPair, action: OrderAction, price: Double, amount: Double, limit: Double?=nil) {
         self.currencyPair = currencyPair
         self.action = action
         self.price = price
@@ -95,7 +95,17 @@ public class Order {
         PrivateResource.trade(apiKeys, nonce: nonce, order: self, callback: callback)
     }
     internal func valid() throws {
-        throw ZSErrorType.INVALID_ORDER(message: "")
+        if self.price <= 0 {
+            throw ZSErrorType.INVALID_ORDER(message: "invalid price")
+        }
+        if let l = self.limit {
+            if l <= 0 {
+                throw ZSErrorType.INVALID_ORDER(message: "invalid limit")
+            }
+        }
+        if self.amount <= 0 {
+            throw ZSErrorType.INVALID_ORDER(message: "invalid amount")
+        }
     }
     
     var priceString: String { get { return self.price.description } }

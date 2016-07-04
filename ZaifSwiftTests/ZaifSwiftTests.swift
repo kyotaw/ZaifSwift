@@ -466,7 +466,7 @@ class ZaifSwiftTests: XCTestCase {
         }
         self.waitForExpectationsWithTimeout(5.0, handler: nil)
     }
-    
+
     func testTradeMonaJpy() {
         // buy mona_jpy
         let monaJpyExpectation = self.expectationWithDescription("buy mona_jpy order success")
