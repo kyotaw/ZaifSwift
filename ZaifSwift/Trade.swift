@@ -83,7 +83,7 @@ public class Trade {
 
 
 public class Order {
-    public init(currencyPair: CurrencyPair, action: OrderAction, price: Double, amount: Double, limit: Double?=nil) {
+    internal init(currencyPair: CurrencyPair, action: OrderAction, price: Double, amount: Double, limit: Double?=nil) {
         self.currencyPair = currencyPair
         self.action = action
         self.price = price
