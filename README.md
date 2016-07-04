@@ -89,7 +89,7 @@ privateApi.trade(sellMonaBtcOrder)
 
 ```swift
 let query = HistoryQuery(currencyPair: .BTC_JPY, order: .ASC, from: 0, count: 10)
-api.tradeHistory(btcQuery) { (err, res) in
+privateApi.tradeHistory(query) { (err, res) in
   print(res)
 }
 /*
