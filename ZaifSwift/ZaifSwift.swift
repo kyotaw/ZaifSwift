@@ -68,6 +68,10 @@ public class PrivateApi {
 }
 
 public class PublicApi {
+    
+    public static func lastPrice(currencyPair: CurrencyPair, callback: ZSCallback) {
+        PublicResource.lastPrice(currencyPair, callback: callback)
+    }
 
     public static func ticker(currencyPair: CurrencyPair, callback: ZSCallback) {
         PublicResource.ticker(currencyPair, callback: callback)

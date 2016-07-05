@@ -178,6 +178,12 @@ class PrivateResource {
 
 
 class PublicResource {
+    
+    internal static func lastPrice(currencyPair: CurrencyPair, callback: ZSCallback) {
+        let url = [PublicResource.url, "last_price", currencyPair.rawValue].joinWithSeparator("/")
+        self.get(url, callback: callback)
+    }
+    
     internal static func ticker(currencyPair: CurrencyPair, callback: ZSCallback) {
         let url = [PublicResource.url, "ticker", currencyPair.rawValue].joinWithSeparator("/")
         self.get(url, callback: callback)

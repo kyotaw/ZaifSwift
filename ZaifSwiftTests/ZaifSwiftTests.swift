@@ -1476,6 +1476,60 @@ class ZaifSwiftTests: XCTestCase {
         self.waitForExpectationsWithTimeout(5.0, handler: nil)
     }
     
+    func testLastPrice() {
+        // btc_jpy
+        let btcLastPrice = self.expectationWithDescription("last price of btc_jpy")
+        PublicApi.lastPrice(.BTC_JPY) { (err, res) in
+            print(res)
+            XCTAssertNil(err)
+            XCTAssertNotNil(res)
+            let price = res?["last_price"].int
+            XCTAssertNotNil(price)
+            btcLastPrice.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5.0, handler: nil)
+        
+        usleep(200)
+        
+        // mona_jpy
+        let monaLastPrice = self.expectationWithDescription("last price of mona_jpy")
+        PublicApi.lastPrice(.MONA_JPY) { (err, res) in
+            print(res)
+            XCTAssertNil(err)
+            XCTAssertNotNil(res)
+            let price = res?["last_price"].int
+            XCTAssertNotNil(price)
+            monaLastPrice.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5.0, handler: nil)
+        
+        usleep(200)
+        
+        // mona_btc
+        let monaBtcLastPrice = self.expectationWithDescription("last price for mona_btc")
+        PublicApi.lastPrice(.MONA_BTC) { (err, res) in
+            print(res)
+            XCTAssertNil(err)
+            XCTAssertNotNil(res)
+            let price = res?["last_price"].int
+            XCTAssertNotNil(price)
+            monaBtcLastPrice.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5.0, handler: nil)
+        
+        // xem_jpy
+        let xemLastPrice = self.expectationWithDescription("last price for xem_jpy")
+        PublicApi.lastPrice(.XEM_JPY) { (err, res) in
+            print(res)
+            XCTAssertNil(err)
+            XCTAssertNotNil(res)
+            let price = res?["last_price"].int
+            XCTAssertNotNil(price)
+            xemLastPrice.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5.0, handler: nil)
+    }
+    
     func testTicker() {
         // btc_jpy
         let btcTicker = self.expectationWithDescription("ticker for btc_jpy")
@@ -1528,8 +1582,6 @@ class ZaifSwiftTests: XCTestCase {
             xemTicker.fulfill()
         }
         self.waitForExpectationsWithTimeout(5.0, handler: nil)
-        
-        usleep(200)
     }
     
     
