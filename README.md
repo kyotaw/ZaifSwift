@@ -117,6 +117,36 @@ Optional({
 * withdraw_history
 
 ## Public APIs
+* last_price
+```swift
+// btc_jpy
+PublicApi.lastPrice(.BTC_JPY) { (err, res) in
+  print(res)
+}
+/*
+Optional({
+  "last_price" : 67775
+})
+*/
+
+// mona_jpy
+PublicApi.lastPrice(.MONA_JPY) { (err, res) in
+  print(res)
+}
+
+// mona_btc
+PublicApi.lastPrice(.MONA_BTC) { (err, res) in
+  print(res)
+}
+
+// xem_jpy
+PublicApi.lastPrice(.XEM_JPY) { (err, res) in
+  print(res)
+}
+```
+
+
+
 * ticker
 
 ```swift
