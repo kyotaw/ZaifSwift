@@ -117,3 +117,37 @@ Optional({
 * withdraw_history
 
 ## Public APIs
+* ticker
+
+```swift
+// btc_jpy
+PublicApi.ticker(.BTC_JPY) { (err, res) in
+  print(res)
+}
+/*
+Optional({
+  "last" : 70015,
+  "bid" : 70015,
+  "low" : 66560,
+  "volume" : 6171.2024,
+  "ask" : 70040,
+  "vwap" : 68672.34390000001,
+  "high" : 70670
+})
+*/
+
+// mona_jpy
+PublicApi.ticker(.MONA_JPY) { (err, res) in
+  print(res)
+}
+
+// mona_btc
+PublicApi.ticker(.MONA_BTC) { (err, res) in
+  print(res)
+}
+
+// xem_jpy
+PublicApi.ticker(.XEM_JPY) { (err, res) in
+  print(res)
+}
+```
