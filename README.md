@@ -181,3 +181,39 @@ PublicApi.ticker(.XEM_JPY) { (err, res) in
   print(res)
 }
 ```
+
+* trades
+
+```swift
+// btc_jpy
+PublicApi.trades(.BTC_JPY) { (err, res) in
+  print(res)
+}
+/*
+Optional([
+  {
+    "amount" : 0.5967,
+    "trade_type" : "ask",
+    "tid" : 7190072,
+    "currency_pair" : "btc_jpy",
+    "price" : 68470,
+    "date" : 1467817624
+  },
+  ...
+*/
+
+// mona_jpy
+PublicApi.trades(.MONA_JPY) { (err, res) in
+  print(res)
+}
+
+// mona_btc
+PublicApi.trades(.MONA_BTC) { (err, res) in
+  print(res)
+}
+
+// xem_jpy
+PublicApi.trades(.XEM_JPY) { (err, res) in
+  print(res)
+}
+```
