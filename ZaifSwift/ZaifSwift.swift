@@ -76,6 +76,14 @@ public class PublicApi {
     public static func ticker(currencyPair: CurrencyPair, callback: ZSCallback) {
         PublicResource.ticker(currencyPair, callback: callback)
     }
+    
+    public static func trades(currencyPair: CurrencyPair, callback: ZSCallback) {
+        PublicResource.trades(currencyPair, callback: callback)
+    }
+    
+    public static func depth(currencyPair: CurrencyPair, callback: ZSCallback) {
+        PublicResource.depth(currencyPair, callback: callback)
+    }
 }
 
 internal struct ApiKeys {

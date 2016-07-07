@@ -1584,6 +1584,135 @@ class ZaifSwiftTests: XCTestCase {
         self.waitForExpectationsWithTimeout(5.0, handler: nil)
     }
     
+    func testTrades() {
+        // btc_jpy
+        let btcTrades = self.expectationWithDescription("trades of btc_jpy")
+        PublicApi.trades(.BTC_JPY) { (err, res) in
+            print(res)
+            XCTAssertNil(err)
+            XCTAssertNotNil(res)
+            let hasEntry = res?.count > 0
+            XCTAssertTrue(hasEntry)
+            let cp = res?[[0, "currency_pair"]].stringValue
+            XCTAssertEqual(cp, "btc_jpy")
+            btcTrades.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5.0, handler: nil)
+        
+        usleep(200)
+        
+        // mona_jpy
+        let monaTrades = self.expectationWithDescription("trades of mona_jpy")
+        PublicApi.trades(.MONA_JPY) { (err, res) in
+            print(res)
+            XCTAssertNil(err)
+            XCTAssertNotNil(res)
+            let hasEntry = res?.count > 0
+            XCTAssertTrue(hasEntry)
+            let cp = res?[[0, "currency_pair"]].stringValue
+            XCTAssertEqual(cp, "mona_jpy")
+            monaTrades.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5.0, handler: nil)
+        
+        usleep(200)
+        
+        // mona_btc
+        let monaBtcTrades = self.expectationWithDescription("trades of mona_btc")
+        PublicApi.trades(.MONA_BTC) { (err, res) in
+            print(res)
+            XCTAssertNil(err)
+            XCTAssertNotNil(res)
+            let hasEntry = res?.count > 0
+            XCTAssertTrue(hasEntry)
+            let cp = res?[[0, "currency_pair"]].stringValue
+            XCTAssertEqual(cp, "mona_btc")
+            monaBtcTrades.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5.0, handler: nil)
+        
+        // xem_jpy
+        let xemTrades = self.expectationWithDescription("trades of xem_jpy")
+        PublicApi.trades(.XEM_JPY) { (err, res) in
+            print(res)
+            XCTAssertNil(err)
+            XCTAssertNotNil(res)
+            let hasEntry = res?.count > 0
+            XCTAssertTrue(hasEntry)
+            let cp = res?[[0, "currency_pair"]].stringValue
+            XCTAssertEqual(cp, "xem_jpy")
+            xemTrades.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5.0, handler: nil)
+        
+    }
+    
+    func testDepth() {
+        // btc_jpy
+        let btcDepth = self.expectationWithDescription("depth of btc_jpy")
+        PublicApi.depth(.BTC_JPY) { (err, res) in
+            print(res)
+            XCTAssertNil(err)
+            XCTAssertNotNil(res)
+            let hasAsks = res?["asks"].count > 0
+            XCTAssertTrue(hasAsks)
+            XCTAssertNotNil(res)
+            let hasBids = res?["bids"].count > 0
+            XCTAssertTrue(hasBids)
+            btcDepth.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5.0, handler: nil)
+        
+        usleep(200)
+        
+        // mona_jpy
+        let monaDepth = self.expectationWithDescription("depth of mona_jpy")
+        PublicApi.depth(.MONA_JPY) { (err, res) in
+            print(res)
+            XCTAssertNil(err)
+            XCTAssertNotNil(res)
+            let hasAsks = res?["asks"].count > 0
+            XCTAssertTrue(hasAsks)
+            XCTAssertNotNil(res)
+            let hasBids = res?["bids"].count > 0
+            XCTAssertTrue(hasBids)
+            monaDepth.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5.0, handler: nil)
+        
+        usleep(200)
+        
+        // mona_btc
+        let monaBtcDepth = self.expectationWithDescription("depth of mona_btc")
+        PublicApi.depth(.MONA_BTC) { (err, res) in
+            print(res)
+            XCTAssertNil(err)
+            XCTAssertNotNil(res)
+            let hasAsks = res?["asks"].count > 0
+            XCTAssertTrue(hasAsks)
+            XCTAssertNotNil(res)
+            let hasBids = res?["bids"].count > 0
+            XCTAssertTrue(hasBids)
+            monaBtcDepth.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5.0, handler: nil)
+        
+        // xem_jpy
+        let xemDepth = self.expectationWithDescription("depth of xem_jpy")
+        PublicApi.depth(.XEM_JPY) { (err, res) in
+            print(res)
+            XCTAssertNil(err)
+            XCTAssertNotNil(res)
+            let hasAsks = res?["asks"].count > 0
+            XCTAssertTrue(hasAsks)
+            XCTAssertNotNil(res)
+            let hasBids = res?["bids"].count > 0
+            XCTAssertTrue(hasBids)
+            xemDepth.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5.0, handler: nil)
+        
+    }
     
     func testSerialNonce() {
         // invalid initial value test
