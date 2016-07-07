@@ -117,6 +117,36 @@ Optional({
 * withdraw_history
 
 ## Public APIs
+* last_price
+```swift
+// btc_jpy
+PublicApi.lastPrice(.BTC_JPY) { (err, res) in
+  print(res)
+}
+/*
+Optional({
+  "last_price" : 67775
+})
+*/
+
+// mona_jpy
+PublicApi.lastPrice(.MONA_JPY) { (err, res) in
+  print(res)
+}
+
+// mona_btc
+PublicApi.lastPrice(.MONA_BTC) { (err, res) in
+  print(res)
+}
+
+// xem_jpy
+PublicApi.lastPrice(.XEM_JPY) { (err, res) in
+  print(res)
+}
+```
+
+
+
 * ticker
 
 ```swift
@@ -148,6 +178,42 @@ PublicApi.ticker(.MONA_BTC) { (err, res) in
 
 // xem_jpy
 PublicApi.ticker(.XEM_JPY) { (err, res) in
+  print(res)
+}
+```
+
+* trades
+
+```swift
+// btc_jpy
+PublicApi.trades(.BTC_JPY) { (err, res) in
+  print(res)
+}
+/*
+Optional([
+  {
+    "amount" : 0.5967,
+    "trade_type" : "ask",
+    "tid" : 7190072,
+    "currency_pair" : "btc_jpy",
+    "price" : 68470,
+    "date" : 1467817624
+  },
+  ...
+*/
+
+// mona_jpy
+PublicApi.trades(.MONA_JPY) { (err, res) in
+  print(res)
+}
+
+// mona_btc
+PublicApi.trades(.MONA_BTC) { (err, res) in
+  print(res)
+}
+
+// xem_jpy
+PublicApi.trades(.XEM_JPY) { (err, res) in
   print(res)
 }
 ```
