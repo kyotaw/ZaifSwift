@@ -217,3 +217,50 @@ PublicApi.trades(.XEM_JPY) { (err, res) in
   print(res)
 }
 ```
+
+* depth
+
+```swift
+// btc_jpy
+PublicApi.depth(.BTC_JPY) { (err, res) in
+  print(res)
+}
+/*
+Optional({
+  "asks" : [
+    [
+      65035,
+      0.3033
+    ],
+    [
+      65045,
+      4
+    ],
+  ...
+  "bids" : [
+    [
+      65020,
+      0.0617
+    ],
+    [
+      65000,
+      0.0101
+    ],
+  ...
+*/
+
+// mona_jpy
+PublicApi.depth(.MONA_JPY) { (err, res) in
+  print(res)
+}
+
+// mona_btc
+PublicApi.depth(.MONA_BTC) { (err, res) in
+  print(res)
+}
+
+// xem_jpy
+PublicApi.depth(.XEM_JPY) { (err, res) in
+  print(res)
+}
+```
