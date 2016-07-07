@@ -13,7 +13,7 @@ Zaif API wrappers for Swift
 Private api requires your own API keys. If you don't have keys, visit Zaif site(https://zaif.jp/) and generate your keys.
 
 ```swift
-let privateApi = PrivateApi(apiKey: my_key, secretKey: my_secret)
+let privateApi = PrivateApi(apiKey: myKey, secretKey: mySecret)
 ```
 
 * get_info
