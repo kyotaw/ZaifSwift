@@ -1,5 +1,5 @@
 //
-//  Order.swift
+//  Trade.swift
 //  ZaifSwift
 //
 //  Created by 渡部郷太 on 6/26/16.
