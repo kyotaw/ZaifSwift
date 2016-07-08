@@ -1476,6 +1476,66 @@ class ZaifSwiftTests: XCTestCase {
         self.waitForExpectationsWithTimeout(5.0, handler: nil)
     }
     
+    func testActiveOrder() {
+        // btc_jpy
+        let btcExpectation = self.expectationWithDescription("active orders of btc_jpy")
+        api.activeOrder(.BTC_JPY) { (err, res) in
+            print(res)
+            let hasEntry = res!["return"].dictionary?.count > 0
+            XCTAssertTrue(hasEntry)
+            let pair = res!["return"].dictionary?.first?.1["currency_pair"].stringValue
+            XCTAssertEqual(pair, "btc_jpy")
+            btcExpectation.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5.0, handler: nil)
+        
+        // mona_jpy
+        let monaExpectation = self.expectationWithDescription("active orders of mona_jpy")
+        api.activeOrder(.MONA_JPY) { (err, res) in
+            print(res)
+            let hasEntry = res!["return"].dictionary?.count > 0
+            XCTAssertTrue(hasEntry)
+            let pair = res!["return"].dictionary?.first?.1["currency_pair"].stringValue
+            XCTAssertEqual(pair, "mona_jpy")
+            monaExpectation.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5.0, handler: nil)
+        
+        // mona_btc
+        let monaBtcExpectation = self.expectationWithDescription("active orders of mona_btc")
+        api.activeOrder(.MONA_BTC) { (err, res) in
+            print(res)
+            let hasEntry = res!["return"].dictionary?.count > 0
+            XCTAssertTrue(hasEntry)
+            let pair = res!["return"].dictionary?.first?.1["currency_pair"].stringValue
+            XCTAssertEqual(pair, "mona_btc")
+            monaBtcExpectation.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5.0, handler: nil)
+        
+        // xem_jpy
+        let xemExpectation = self.expectationWithDescription("active orders of xem_jpy")
+        api.activeOrder(.XEM_JPY) { (err, res) in
+            print(res)
+            let hasEntry = res!["return"].dictionary?.count > 0
+            XCTAssertTrue(hasEntry)
+            let pair = res!["return"].dictionary?.first?.1["currency_pair"].stringValue
+            XCTAssertEqual(pair, "xem_jpy")
+            xemExpectation.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5.0, handler: nil)
+        
+        // all
+        let allExpectation = self.expectationWithDescription("active orders of all")
+        api.activeOrder() { (err, res) in
+            print(res)
+            let hasEntry = res!["return"].dictionary?.count > 0
+            XCTAssertTrue(hasEntry)
+            allExpectation.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5.0, handler: nil)
+    }
+    
     func testLastPrice() {
         // btc_jpy
         let btcLastPrice = self.expectationWithDescription("last price of btc_jpy")

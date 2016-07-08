@@ -111,6 +111,27 @@ class PrivateResource {
         }
     }
     
+    internal static func activeOrders(apiKeys: ApiKeys, nonce: NonceProtocol, currencyPair: CurrencyPair?, callback: ZSCallback) {
+        do {
+            let nonce = try nonce.getNonce()
+            var params = [
+                "nonce": nonce,
+                "method": "active_orders",
+                ]
+            if let c = currencyPair {
+                params["currency_pair"] = c.rawValue
+            }
+            let headers = try self.makeHeaders(params, apiKeys: apiKeys)
+            self.post(params, headers: headers, callback: callback)
+        } catch ZSErrorType.NONCE_EXCEED_LIMIT {
+            callback(err: ZSError(errorType: .NONCE_EXCEED_LIMIT), res: nil)
+        } catch ZSErrorType.CRYPTION_ERROR {
+            callback(err: ZSError(errorType: .CRYPTION_ERROR), res: nil)
+        } catch {
+            callback(err: ZSError(errorType: .UNKNOWN_ERROR), res: nil)
+        }
+    }
+
     private static func makeHeaders(params: Dictionary<String, String>, apiKeys: ApiKeys) throws -> Dictionary<String, String> {
         var headers = [
             "Key": apiKeys.apiKey

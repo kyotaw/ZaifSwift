@@ -63,6 +63,10 @@ public class PrivateApi {
         PrivateResource.tradeHistory(self.keys, nonce: self.nonce, query: query, callback: callback)
     }
     
+    public func activeOrder(currencyPair: CurrencyPair?=nil, callback: ZSCallback) {
+        PrivateResource.activeOrders(self.keys, nonce: self.nonce, currencyPair: currencyPair, callback: callback)
+    }
+    
     private let keys: ApiKeys
     private let nonce: NonceProtocol!
 }
