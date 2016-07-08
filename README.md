@@ -1,5 +1,5 @@
 # ZaifSwift
-Zaif API wrappers for Swift
+Zaif Exchange API wrappers for Swift
 
 ## Requirement
 * Swift 2.0 or later  
