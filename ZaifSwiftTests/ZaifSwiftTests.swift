@@ -1476,10 +1476,10 @@ class ZaifSwiftTests: XCTestCase {
         self.waitForExpectationsWithTimeout(5.0, handler: nil)
     }
     
-    func testActiveOrder() {
+    func testActiveOrders() {
         // btc_jpy
         let btcExpectation = self.expectationWithDescription("active orders of btc_jpy")
-        api.activeOrder(.BTC_JPY) { (err, res) in
+        api.activeOrders(.BTC_JPY) { (err, res) in
             print(res)
             let hasEntry = res!["return"].dictionary?.count > 0
             XCTAssertTrue(hasEntry)
@@ -1491,7 +1491,7 @@ class ZaifSwiftTests: XCTestCase {
         
         // mona_jpy
         let monaExpectation = self.expectationWithDescription("active orders of mona_jpy")
-        api.activeOrder(.MONA_JPY) { (err, res) in
+        api.activeOrders(.MONA_JPY) { (err, res) in
             print(res)
             let hasEntry = res!["return"].dictionary?.count > 0
             XCTAssertTrue(hasEntry)
@@ -1503,7 +1503,7 @@ class ZaifSwiftTests: XCTestCase {
         
         // mona_btc
         let monaBtcExpectation = self.expectationWithDescription("active orders of mona_btc")
-        api.activeOrder(.MONA_BTC) { (err, res) in
+        api.activeOrders(.MONA_BTC) { (err, res) in
             print(res)
             let hasEntry = res!["return"].dictionary?.count > 0
             XCTAssertTrue(hasEntry)
@@ -1515,7 +1515,7 @@ class ZaifSwiftTests: XCTestCase {
         
         // xem_jpy
         let xemExpectation = self.expectationWithDescription("active orders of xem_jpy")
-        api.activeOrder(.XEM_JPY) { (err, res) in
+        api.activeOrders(.XEM_JPY) { (err, res) in
             print(res)
             let hasEntry = res!["return"].dictionary?.count > 0
             XCTAssertTrue(hasEntry)
@@ -1527,7 +1527,7 @@ class ZaifSwiftTests: XCTestCase {
         
         // all
         let allExpectation = self.expectationWithDescription("active orders of all")
-        api.activeOrder() { (err, res) in
+        api.activeOrders() { (err, res) in
             print(res)
             let hasEntry = res!["return"].dictionary?.count > 0
             XCTAssertTrue(hasEntry)
