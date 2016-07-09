@@ -1,5 +1,5 @@
 # ZaifSwift
-Zaif API wrappers for Swift
+Zaif Exchange API wrappers for Swift
 
 ## Requirement
 * Swift 2.0 or later  
@@ -111,6 +111,49 @@ Optional({
 ```
 
 * active_orders
+
+```swift
+// btc_jpy
+privateApi.activeOrders(.BTC_JPY) { (err, res) in
+  print(res)
+}
+/*
+Optional({
+  "return" : {
+    "38342891" : {
+      "amount" : 2.55,
+      "currency_pair" : "btc_jpy",
+      "timestamp" : "1467988800",
+      "price" : 67000,
+      "comment" : "",
+      "action" : "ask"
+    }
+  },
+  "success" : 1
+})
+*/
+
+// mona_jpy
+privateApi.activeOrders(.MONA_JPY) { (err, res) in
+  print(res)
+}
+
+// mona_btc
+privateApi.activeOrders(.MONA_BTC) { (err, res) in
+  print(res)
+}
+
+// xem_jpy
+privateApi.activeOrders(.XEM_JPY) { (err, res) in
+  print(res)
+}
+
+// all pairs
+privateApi.activeOrders() { (err, res) in
+  print(res)
+}
+```
+
 * cancel_order
 * withdraw
 * deposit_history
