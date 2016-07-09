@@ -67,6 +67,10 @@ public class PrivateApi {
         PrivateResource.activeOrders(self.keys, nonce: self.nonce, currencyPair: currencyPair, callback: callback)
     }
     
+    public func cancelOrder(orderId: Int, callback: ZSCallback) {
+        PrivateResource.cancelOrder(self.keys, nonce: self.nonce, orderId: orderId, callback: callback)
+    }
+    
     private let keys: ApiKeys
     private let nonce: NonceProtocol!
 }

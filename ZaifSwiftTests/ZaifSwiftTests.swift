@@ -1536,6 +1536,67 @@ class ZaifSwiftTests: XCTestCase {
         self.waitForExpectationsWithTimeout(5.0, handler: nil)
     }
     
+    func testCancelOrder() {
+        var orderIds: [String] = []
+        let allExpectation = self.expectationWithDescription("active orders of all")
+        api.activeOrders() { (err, res) in
+            print(res)
+            let hasEntry = res!["return"].dictionary?.count > 0
+            XCTAssertTrue(hasEntry)
+            
+            for (orderId, _) in res!["return"].dictionaryValue {
+                orderIds.append(orderId)
+            }
+            allExpectation.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5.0, handler: nil)
+        
+        
+        let cancelExpectation = self.expectationWithDescription("cancel orders")
+        var count = orderIds.count
+        let semaphore = dispatch_semaphore_create(1)
+        for orderId in orderIds {
+            api.cancelOrder(Int(orderId)!) { (err, res) in
+                print(res)
+                let hasEntry = res!["return"].dictionary?.count > 0
+                XCTAssertTrue(hasEntry)
+                var resOrderId = res!["return"].dictionaryValue["order_id"]
+                XCTAssertEqual(resOrderId?.stringValue, orderId)
+                dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
+                count -= 1
+                if count == 0 {
+                    cancelExpectation.fulfill()
+                }
+                dispatch_semaphore_signal(semaphore)
+            }
+        }
+        self.waitForExpectationsWithTimeout(5.0, handler: nil)
+        
+        let invalid = self.expectationWithDescription("invalid order id")
+        api.cancelOrder(-1) { (err, res) in
+            print(res)
+            XCTAssertNotNil(err)
+            invalid.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(50.0, handler: nil)
+        
+        let invalid2 = self.expectationWithDescription("invalid order id")
+        api.cancelOrder(0) { (err, res) in
+            print(res)
+            XCTAssertNotNil(err)
+            invalid2.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5.0, handler: nil)
+        
+        let invalid3 = self.expectationWithDescription("invalid order id")
+        api.cancelOrder(999) { (err, res) in
+            print(res)
+            XCTAssertNotNil(err)
+            invalid3.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(5.0, handler: nil)
+    }
+    
     func testLastPrice() {
         // btc_jpy
         let btcLastPrice = self.expectationWithDescription("last price of btc_jpy")

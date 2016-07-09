@@ -131,6 +131,25 @@ class PrivateResource {
             callback(err: ZSError(errorType: .UNKNOWN_ERROR), res: nil)
         }
     }
+    
+    internal static func cancelOrder(apiKeys: ApiKeys, nonce: NonceProtocol, orderId: Int, callback: ZSCallback) {
+        do {
+            let nonce = try nonce.getNonce()
+            let params = [
+                "nonce": nonce,
+                "method": "cancel_order",
+                "order_id": orderId.description
+            ]
+            let headers = try self.makeHeaders(params, apiKeys: apiKeys)
+            self.post(params, headers: headers, callback: callback)
+        } catch ZSErrorType.NONCE_EXCEED_LIMIT {
+            callback(err: ZSError(errorType: .NONCE_EXCEED_LIMIT), res: nil)
+        } catch ZSErrorType.CRYPTION_ERROR {
+            callback(err: ZSError(errorType: .CRYPTION_ERROR), res: nil)
+        } catch {
+            callback(err: ZSError(errorType: .UNKNOWN_ERROR), res: nil)
+        }
+    }
 
     private static func makeHeaders(params: Dictionary<String, String>, apiKeys: ApiKeys) throws -> Dictionary<String, String> {
         var headers = [
