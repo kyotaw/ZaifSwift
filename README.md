@@ -155,6 +155,27 @@ privateApi.activeOrders() { (err, res) in
 ```
 
 * cancel_order
+
+```swift
+let orderId = 3343718
+privateApi.cancelOrder(orderId) { (err, res) in
+  print(res)
+}
+/*
+Optional({
+  "return" : {
+    "funds" : {
+      "jpy" : 173871.5225,
+      "btc" : 0.00004212,
+      "mona" : 17
+    },
+    "order_id" : 3343718
+  },
+  "success" : 1
+})
+*/
+```
+
 * withdraw
 * deposit_history
 * withdraw_history
