@@ -10,11 +10,13 @@ use_frameworks!
 target 'ZaifSwift' do
   pod 'CryptoSwift', '0.5'
   pod 'Alamofire', '~> 3.4'
+  pod 'SwiftWebSocket'
   pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
 end
 
 target 'ZaifSwiftTests' do
   pod 'CryptoSwift', '0.5'
   pod 'Alamofire', '~> 3.4'
+  pod 'SwiftWebSocket'
   pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
 end

@@ -23,7 +23,7 @@ private func makeQueryString(params: Dictionary<String, String>) -> String {
 }
 
 
-class PrivateResource {
+internal class PrivateResource {
     
     internal static func getInfo(apiKeys: ApiKeys, nonce: NonceProtocol, callback: ZSCallback) {
         do {
@@ -217,7 +217,7 @@ class PrivateResource {
 }
 
 
-class PublicResource {
+internal class PublicResource {
     
     internal static func lastPrice(currencyPair: CurrencyPair, callback: ZSCallback) {
         let url = [PublicResource.url, "last_price", currencyPair.rawValue].joinWithSeparator("/")
@@ -253,4 +253,19 @@ class PublicResource {
     }
     
     internal static let url = "https://api.zaif.jp/api/1"
+}
+
+
+internal class StreamingResource {
+    
+    internal static func stream(currencyPair: CurrencyPair, openCallback: ZSCallback?=nil) -> Stream {
+        let params = [
+            "currency_pair": currencyPair.rawValue
+        ]
+        let query = makeQueryString(params)
+        let url = [StreamingResource.url, query].joinWithSeparator("?")
+        return Stream(url: url, openCallback: openCallback)
+    }
+    
+    internal static let url = "ws://api.zaif.jp:8888/stream"
 }

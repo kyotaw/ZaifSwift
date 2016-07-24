@@ -94,6 +94,14 @@ public class PublicApi {
     }
 }
 
+public class StreamingApi {
+    
+    public static func stream(currencyPair: CurrencyPair, openCallback: ZSCallback) -> Stream {
+        return StreamingResource.stream(currencyPair, openCallback: openCallback)
+    }
+    
+}
+
 internal struct ApiKeys {
     internal init(apiKey: String, secretKey: String) {
         self.apiKey = apiKey

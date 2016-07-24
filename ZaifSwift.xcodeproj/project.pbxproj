@@ -10,6 +10,8 @@
 		1B58D64CDE4441204D43E6CB /* Pods_ZaifSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9D361C22B89D95465F5425A /* Pods_ZaifSwiftTests.framework */; };
 		4F24A78DF0357E6DE36C263E /* Pods_ZaifSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86F7F6771739DBCB96F342C3 /* Pods_ZaifSwift.framework */; };
 		B85CA4231D297186008987DA /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85CA4221D297186008987DA /* Keys.swift */; };
+		B85D96EC1D311F3D00A0B38E /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85D96EB1D311F3D00A0B38E /* Stream.swift */; };
+		B85D96ED1D31544B00A0B38E /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85D96EB1D311F3D00A0B38E /* Stream.swift */; };
 		B89412F81D296F9A00AA1A4B /* ZaifSwift.h in Headers */ = {isa = PBXBuildFile; fileRef = B89412F71D296F9A00AA1A4B /* ZaifSwift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B89412FF1D296F9A00AA1A4B /* ZaifSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B89412F41D296F9A00AA1A4B /* ZaifSwift.framework */; };
 		B89413041D296F9A00AA1A4B /* ZaifSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89413031D296F9A00AA1A4B /* ZaifSwiftTests.swift */; };
@@ -43,6 +45,7 @@
 		87CC8CF59C8132644AD8D1A7 /* Pods-ZaifSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZaifSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZaifSwift/Pods-ZaifSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		962AE8221FE26508F001FB5C /* Pods-ZaifSwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZaifSwiftTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZaifSwiftTests/Pods-ZaifSwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B85CA4221D297186008987DA /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
+		B85D96EB1D311F3D00A0B38E /* Stream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stream.swift; sourceTree = "<group>"; };
 		B89412F41D296F9A00AA1A4B /* ZaifSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ZaifSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B89412F71D296F9A00AA1A4B /* ZaifSwift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZaifSwift.h; sourceTree = "<group>"; };
 		B89412F91D296F9A00AA1A4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -111,6 +114,7 @@
 				B89413131D29704100AA1A4B /* ZaifSwift.swift */,
 				B89412F71D296F9A00AA1A4B /* ZaifSwift.h */,
 				B89412F91D296F9A00AA1A4B /* Info.plist */,
+				B85D96EB1D311F3D00A0B38E /* Stream.swift */,
 			);
 			path = ZaifSwift;
 			sourceTree = "<group>";
@@ -344,6 +348,7 @@
 				B89413191D29704100AA1A4B /* ZaifSwift.swift in Sources */,
 				B89413161D29704100AA1A4B /* Nonce.swift in Sources */,
 				B89413141D29704100AA1A4B /* Error.swift in Sources */,
+				B85D96EC1D311F3D00A0B38E /* Stream.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +363,7 @@
 				B894131A1D29705500AA1A4B /* Error.swift in Sources */,
 				B894131F1D29706700AA1A4B /* ZaifSwift.swift in Sources */,
 				B894131D1D29706000AA1A4B /* Resource.swift in Sources */,
+				B85D96ED1D31544B00A0B38E /* Stream.swift in Sources */,
 				B89413041D296F9A00AA1A4B /* ZaifSwiftTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

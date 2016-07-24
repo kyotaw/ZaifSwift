@@ -1597,6 +1597,108 @@ class ZaifSwiftTests: XCTestCase {
         self.waitForExpectationsWithTimeout(5.0, handler: nil)
     }
     
+    func testStream() {
+        
+        // btc_jpy
+        let streamExpectation = self.expectationWithDescription("stream of btc_jpy")
+        let stream = StreamingApi.stream(.BTC_JPY) { _,_ in
+            print("opened btc_jpy")
+        }
+        var count = 10
+        stream.onData() { (_, res) in
+            print(res)
+            count -= 1
+            if count <= 0 {
+                streamExpectation.fulfill()
+                stream.onData(nil)
+            }
+        }
+        stream.onError() { (err, _) in
+            print(err)
+        }
+        self.waitForExpectationsWithTimeout(50.0, handler: nil)
+        
+        let colseExp = self.expectationWithDescription("")
+        stream.onClose() { (_, res) in
+            print(res)
+            colseExp.fulfill()
+        }
+        stream.close()
+        self.waitForExpectationsWithTimeout(50.0, handler: nil)
+        
+        // mona_jpy
+        let streamExpectation2 = self.expectationWithDescription("stream of mona_jpy")
+        let stream2 = StreamingApi.stream(.MONA_JPY) { _,_ in
+            print("opened mona_jpy")
+        }
+        count = 1
+        stream2.onData() { (_, res) in
+            print(res)
+            count -= 1
+            if count <= 0 {
+                streamExpectation2.fulfill()
+                stream2.onData(nil)
+            }
+        }
+        self.waitForExpectationsWithTimeout(5000.0, handler: nil)
+        
+        let colseExp2 = self.expectationWithDescription("")
+        stream2.onClose() { (_, res) in
+            print(res)
+            colseExp2.fulfill()
+        }
+        stream2.close()
+        self.waitForExpectationsWithTimeout(50.0, handler: nil)
+        
+        // mona_btc
+        let streamExpectation3 = self.expectationWithDescription("stream of mona_btc")
+        let stream3 = StreamingApi.stream(.MONA_BTC) { _,_ in
+            print("opened mona_btc")
+        }
+        count = 1
+        stream3.onData() { (_, res) in
+            print(res)
+            count -= 1
+            if count <= 0 {
+                streamExpectation3.fulfill()
+                stream3.onData(nil)
+            }
+        }
+        self.waitForExpectationsWithTimeout(5000.0, handler: nil)
+        
+        let colseExp3 = self.expectationWithDescription("")
+        stream3.onClose() { (_, res) in
+            print(res)
+            colseExp3.fulfill()
+        }
+        stream3.close()
+        self.waitForExpectationsWithTimeout(50.0, handler: nil)
+        
+        // xem_jpy
+        let streamExpectation4 = self.expectationWithDescription("stream of xem_jpy")
+        let stream4 = StreamingApi.stream(.XEM_JPY) { _,_ in
+            print("opened xem_jpy")
+        }
+        count = 1
+        stream4.onData() { (_, res) in
+            print(res)
+            count -= 1
+            if count <= 0 {
+                streamExpectation4.fulfill()
+                stream4.onData(nil)
+            }
+        }
+        self.waitForExpectationsWithTimeout(5000.0, handler: nil)
+        
+        let colseExp4 = self.expectationWithDescription("")
+        stream4.onClose() { (_, res) in
+            print(res)
+            colseExp4.fulfill()
+        }
+        stream4.close()
+        self.waitForExpectationsWithTimeout(50.0, handler: nil)
+    }
+    
     func testLastPrice() {
         // btc_jpy
         let btcLastPrice = self.expectationWithDescription("last price of btc_jpy")
