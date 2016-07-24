@@ -1619,12 +1619,39 @@ class ZaifSwiftTests: XCTestCase {
         self.waitForExpectationsWithTimeout(50.0, handler: nil)
         
         let colseExp = self.expectationWithDescription("")
-        stream.onClose() { (_, res) in
+        stream.close() { (_, res) in
             print(res)
             colseExp.fulfill()
         }
-        stream.close()
         self.waitForExpectationsWithTimeout(50.0, handler: nil)
+        
+        // reopen
+        let streamExpectationRe = self.expectationWithDescription("stream of btc_jpy")
+        stream.open() { (_, _) in
+            print("reopened")
+        }
+
+        count = 10
+        stream.onData() { (_, res) in
+            print(res)
+            count -= 1
+            if count <= 0 {
+                streamExpectationRe.fulfill()
+                stream.onData(nil)
+            }
+        }
+        stream.onError() { (err, _) in
+            print(err)
+        }
+        self.waitForExpectationsWithTimeout(50.0, handler: nil)
+        
+        let colseExpRe = self.expectationWithDescription("")
+        stream.close() { (_, res) in
+            print(res)
+            colseExpRe.fulfill()
+        }
+        self.waitForExpectationsWithTimeout(50.0, handler: nil)
+        
         
         // mona_jpy
         let streamExpectation2 = self.expectationWithDescription("stream of mona_jpy")

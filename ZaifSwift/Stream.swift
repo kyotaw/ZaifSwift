@@ -15,8 +15,7 @@ import SwiftyJSON
 public class Stream {
     internal init(url: String, openCallback: ZSCallback?=nil) {
         self.socket = WebSocket(url)
-        self._onOpen = openCallback
-    
+        
         self.socket.event.open = {
             if let cb = self._onOpen {
                 cb(err: nil, res: nil)
@@ -38,22 +37,32 @@ public class Stream {
                 cb(err: ZSError(errorType: .UNKNOWN_ERROR, message: e.description), res: nil)
             }
         }
-        self.socket.open()
+        self.open(openCallback)
     }
     
-    public func close() {
+    public func open(callback: ZSCallback?=nil) {
+        self.onOpen(callback)
+        self.socket.open() // do nothing if socket already opened otherwise reopen.
+    }
+    
+    public func close(callback: ZSCallback?=nil) {
+        self.onClose(callback)
         self.socket.close()
     }
     
-    public func onClose(callback: ZSCallback?) {
+    public func onOpen(callback: ZSCallback?=nil) {
+        self._onOpen = callback
+    }
+    
+    public func onClose(callback: ZSCallback?=nil) {
         self._onClose = callback
     }
     
-    public func onData(callback: ZSCallback?) {
+    public func onData(callback: ZSCallback?=nil) {
         self._onData = callback
     }
     
-    public func onError(callback: ZSCallback?) {
+    public func onError(callback: ZSCallback?=nil) {
         self._onError = callback
     }
     

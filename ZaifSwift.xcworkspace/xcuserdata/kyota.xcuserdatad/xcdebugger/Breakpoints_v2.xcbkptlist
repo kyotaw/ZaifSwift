@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ZaifSwiftTests/ZaifSwiftTests.swift"
-            timestampString = "491035195.131527"
+            timestampString = "491061865.541144"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1759"
-            endingLineNumber = "1759"
+            startingLineNumber = "1786"
+            endingLineNumber = "1786"
             landmarkName = "testTicker()"
             landmarkType = "5">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ZaifSwiftTests/ZaifSwiftTests.swift"
-            timestampString = "491035195.131527"
+            timestampString = "491061865.541144"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1763"
-            endingLineNumber = "1763"
+            startingLineNumber = "1790"
+            endingLineNumber = "1790"
             landmarkName = "testTicker()"
             landmarkType = "5">
          </BreakpointContent>
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ZaifSwiftTests/ZaifSwiftTests.swift"
-            timestampString = "491035195.131527"
+            timestampString = "491061865.541144"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1772"
-            endingLineNumber = "1772"
+            startingLineNumber = "1799"
+            endingLineNumber = "1799"
             landmarkName = "testTicker()"
             landmarkType = "5">
          </BreakpointContent>
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ZaifSwiftTests/ZaifSwiftTests.swift"
-            timestampString = "491035195.131527"
+            timestampString = "491061865.541144"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1775"
-            endingLineNumber = "1775"
+            startingLineNumber = "1802"
+            endingLineNumber = "1802"
             landmarkName = "testTicker()"
             landmarkType = "5">
          </BreakpointContent>
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ZaifSwiftTests/ZaifSwiftTests.swift"
-            timestampString = "491035195.131527"
+            timestampString = "491061865.541144"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1789"
-            endingLineNumber = "1789"
+            startingLineNumber = "1816"
+            endingLineNumber = "1816"
             landmarkName = "testTicker()"
             landmarkType = "5">
          </BreakpointContent>
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ZaifSwiftTests/ZaifSwiftTests.swift"
-            timestampString = "491035195.131527"
+            timestampString = "491061865.541144"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1801"
-            endingLineNumber = "1801"
+            startingLineNumber = "1828"
+            endingLineNumber = "1828"
             landmarkName = "testTicker()"
             landmarkType = "5">
          </BreakpointContent>
@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ZaifSwiftTests/ZaifSwiftTests.swift"
-            timestampString = "491035195.131527"
+            timestampString = "491061865.541144"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1760"
-            endingLineNumber = "1760"
+            startingLineNumber = "1787"
+            endingLineNumber = "1787"
             landmarkName = "testTicker()"
             landmarkType = "5">
          </BreakpointContent>
@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ZaifSwiftTests/ZaifSwiftTests.swift"
-            timestampString = "491035195.131527"
+            timestampString = "491061865.541144"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1758"
-            endingLineNumber = "1758"
+            startingLineNumber = "1785"
+            endingLineNumber = "1785"
             landmarkName = "testTicker()"
             landmarkType = "5">
          </BreakpointContent>
@@ -250,11 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ZaifSwiftTests/ZaifSwiftTests.swift"
-            timestampString = "491035195.131527"
+            timestampString = "491061865.541144"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1706"
-            endingLineNumber = "1706"
+            startingLineNumber = "1733"
+            endingLineNumber = "1733"
             landmarkName = "testLastPrice()"
             landmarkType = "5">
          </BreakpointContent>
@@ -266,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ZaifSwiftTests/ZaifSwiftTests.swift"
-            timestampString = "491035195.131527"
+            timestampString = "491061865.541144"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1721"
-            endingLineNumber = "1721"
+            startingLineNumber = "1748"
+            endingLineNumber = "1748"
             landmarkName = "testLastPrice()"
             landmarkType = "5">
             <Locations>
@@ -314,11 +314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ZaifSwiftTests/ZaifSwiftTests.swift"
-            timestampString = "491035195.131527"
+            timestampString = "491061865.541144"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1736"
-            endingLineNumber = "1736"
+            startingLineNumber = "1763"
+            endingLineNumber = "1763"
             landmarkName = "testLastPrice()"
             landmarkType = "5">
             <Locations>
@@ -362,11 +362,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ZaifSwiftTests/ZaifSwiftTests.swift"
-            timestampString = "491035195.131527"
+            timestampString = "491061865.541144"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1747"
-            endingLineNumber = "1747"
+            startingLineNumber = "1774"
+            endingLineNumber = "1774"
             landmarkName = "testLastPrice()"
             landmarkType = "5">
             <Locations>
@@ -410,11 +410,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ZaifSwiftTests/ZaifSwiftTests.swift"
-            timestampString = "491035195.131527"
+            timestampString = "491061865.541144"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1707"
-            endingLineNumber = "1707"
+            startingLineNumber = "1734"
+            endingLineNumber = "1734"
             landmarkName = "testLastPrice()"
             landmarkType = "5">
             <Locations>
@@ -426,11 +426,11 @@
                   moduleName = "ZaifSwiftTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kyota/work/ZaifSwift/ZaifSwiftTests/ZaifSwiftTests.swift"
-                  timestampString = "491035423.160168"
+                  timestampString = "491061866.933649"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "1707"
-                  endingLineNumber = "1707"
+                  startingLineNumber = "1734"
+                  endingLineNumber = "1734"
                   offsetFromSymbolStart = "876">
                </Location>
                <Location
@@ -441,11 +441,11 @@
                   moduleName = "ZaifSwiftTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kyota/work/ZaifSwift/ZaifSwiftTests/ZaifSwiftTests.swift"
-                  timestampString = "491035423.160366"
+                  timestampString = "491061866.933928"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "1707"
-                  endingLineNumber = "1707"
+                  startingLineNumber = "1734"
+                  endingLineNumber = "1734"
                   offsetFromSymbolStart = "139">
                </Location>
             </Locations>
@@ -458,11 +458,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ZaifSwiftTests/ZaifSwiftTests.swift"
-            timestampString = "491035195.131527"
+            timestampString = "491061865.541144"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1815"
-            endingLineNumber = "1815"
+            startingLineNumber = "1842"
+            endingLineNumber = "1842"
             landmarkName = "testTrades()"
             landmarkType = "5">
             <Locations>
@@ -506,11 +506,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ZaifSwiftTests/ZaifSwiftTests.swift"
-            timestampString = "491035195.131527"
+            timestampString = "491061865.541144"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1820"
-            endingLineNumber = "1820"
+            startingLineNumber = "1847"
+            endingLineNumber = "1847"
             landmarkName = "testTrades()"
             landmarkType = "5">
             <Locations>
@@ -554,11 +554,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ZaifSwiftTests/ZaifSwiftTests.swift"
-            timestampString = "491035195.131527"
+            timestampString = "491061865.541144"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1877"
-            endingLineNumber = "1877"
+            startingLineNumber = "1904"
+            endingLineNumber = "1904"
             landmarkName = "testDepth()"
             landmarkType = "5">
          </BreakpointContent>
@@ -570,11 +570,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ZaifSwiftTests/ZaifSwiftTests.swift"
-            timestampString = "491035195.131527"
+            timestampString = "491061865.541144"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1814"
-            endingLineNumber = "1814"
+            startingLineNumber = "1841"
+            endingLineNumber = "1841"
             landmarkName = "testTrades()"
             landmarkType = "5">
          </BreakpointContent>
@@ -586,11 +586,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ZaifSwiftTests/ZaifSwiftTests.swift"
-            timestampString = "491035195.131527"
+            timestampString = "491061865.541144"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1894"
-            endingLineNumber = "1894"
+            startingLineNumber = "1921"
+            endingLineNumber = "1921"
             landmarkName = "testDepth()"
             landmarkType = "5">
          </BreakpointContent>
@@ -602,11 +602,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ZaifSwiftTests/ZaifSwiftTests.swift"
-            timestampString = "491035195.131527"
+            timestampString = "491061865.541144"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1911"
-            endingLineNumber = "1911"
+            startingLineNumber = "1938"
+            endingLineNumber = "1938"
             landmarkName = "testDepth()"
             landmarkType = "5">
          </BreakpointContent>
@@ -618,11 +618,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ZaifSwiftTests/ZaifSwiftTests.swift"
-            timestampString = "491035195.131527"
+            timestampString = "491061865.541144"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1926"
-            endingLineNumber = "1926"
+            startingLineNumber = "1953"
+            endingLineNumber = "1953"
             landmarkName = "testDepth()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1162,11 +1162,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ZaifSwift/Stream.swift"
-            timestampString = "489772207.330779"
+            timestampString = "491061287.175031"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
             landmarkName = "init(url:openCallback:)"
             landmarkType = "5">
             <Locations>
@@ -1258,11 +1258,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ZaifSwift/Stream.swift"
-            timestampString = "491033910.978858"
+            timestampString = "491061287.175031"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
             landmarkName = "init(url:openCallback:)"
             landmarkType = "5">
             <Locations>
@@ -1544,11 +1544,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ZaifSwift/Stream.swift"
-            timestampString = "490346500.636342"
+            timestampString = "491061287.175031"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
             landmarkName = "init(url:openCallback:)"
             landmarkType = "5">
             <Locations>
@@ -1592,11 +1592,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ZaifSwift/Stream.swift"
-            timestampString = "490346501.938698"
+            timestampString = "491061287.175031"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
             landmarkName = "init(url:openCallback:)"
             landmarkType = "5">
             <Locations>
@@ -1640,11 +1640,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ZaifSwift/Stream.swift"
-            timestampString = "491033910.978858"
+            timestampString = "491061287.175031"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
             landmarkName = "init(url:openCallback:)"
             landmarkType = "5">
             <Locations>
@@ -1801,22 +1801,6 @@
             timestampString = "491034288.514944"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1623"
-            endingLineNumber = "1623"
-            landmarkName = "testStream()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ZaifSwiftTests/ZaifSwiftTests.swift"
-            timestampString = "491034288.514944"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1612"
             endingLineNumber = "1612"
             landmarkName = "testStream()"
@@ -1862,11 +1846,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ZaifSwift/Stream.swift"
-            timestampString = "491033360.482133"
+            timestampString = "491061287.175031"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
             landmarkName = "init(url:openCallback:)"
             landmarkType = "5">
             <Locations>
@@ -1910,11 +1894,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ZaifSwift/Stream.swift"
-            timestampString = "491033910.978858"
+            timestampString = "491061287.175031"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
             landmarkName = "init(url:openCallback:)"
             landmarkType = "5">
             <Locations>
@@ -1958,11 +1942,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ZaifSwift/Stream.swift"
-            timestampString = "491033921.019865"
+            timestampString = "491061287.175031"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
             landmarkName = "init(url:openCallback:)"
             landmarkType = "5">
             <Locations>
@@ -2006,11 +1990,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ZaifSwiftTests/ZaifSwiftTests.swift"
-            timestampString = "491034342.85592"
+            timestampString = "491061865.541144"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1630"
-            endingLineNumber = "1630"
+            startingLineNumber = "1657"
+            endingLineNumber = "1657"
             landmarkName = "testStream()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2022,11 +2006,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ZaifSwiftTests/ZaifSwiftTests.swift"
-            timestampString = "491034361.699005"
+            timestampString = "491061865.541144"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1636"
-            endingLineNumber = "1636"
+            startingLineNumber = "1663"
+            endingLineNumber = "1663"
             landmarkName = "testStream()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2038,11 +2022,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ZaifSwiftTests/ZaifSwiftTests.swift"
-            timestampString = "491034401.70155"
+            timestampString = "491061865.541144"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1632"
-            endingLineNumber = "1632"
+            startingLineNumber = "1659"
+            endingLineNumber = "1659"
             landmarkName = "testStream()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2054,11 +2038,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ZaifSwiftTests/ZaifSwiftTests.swift"
-            timestampString = "491034485.274053"
+            timestampString = "491061865.541144"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1639"
-            endingLineNumber = "1639"
+            startingLineNumber = "1666"
+            endingLineNumber = "1666"
             landmarkName = "testStream()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2070,11 +2054,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ZaifSwiftTests/ZaifSwiftTests.swift"
-            timestampString = "491034513.633632"
+            timestampString = "491061865.541144"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1637"
-            endingLineNumber = "1637"
+            startingLineNumber = "1664"
+            endingLineNumber = "1664"
             landmarkName = "testStream()"
             landmarkType = "5">
          </BreakpointContent>
@@ -2091,6 +2075,22 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1610"
             endingLineNumber = "1610"
+            landmarkName = "testStream()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ZaifSwiftTests/ZaifSwiftTests.swift"
+            timestampString = "491061865.541144"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1629"
+            endingLineNumber = "1629"
             landmarkName = "testStream()"
             landmarkType = "5">
          </BreakpointContent>
