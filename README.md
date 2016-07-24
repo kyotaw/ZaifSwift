@@ -2,10 +2,11 @@
 Zaif Exchange API wrappers for Swift
 
 ## Requirement
-* Swift 2.0 or later  
+* Swift 2.2 
 * Alamofire 3.4 or later
 * CryptoSwift 0.5 or later
 * SwiftyJSON
+* SwiftWebSocket
 
 ## Private APIs
 * Create private api instance
@@ -326,5 +327,41 @@ PublicApi.depth(.MONA_BTC) { (err, res) in
 // xem_jpy
 PublicApi.depth(.XEM_JPY) { (err, res) in
   print(res)
+}
+```
+
+##Streaming API
+```swift
+// open streaming
+let stream = StreamingApi.stream(.BTC_JPY) { _,_ in
+  print("opened btc_jpy streaming")
+}
+
+// recieve data
+stream.onData() { (_, res) in
+  print(res)
+}
+/*
+Optional({
+"asks": [[69490.0, 1.3131], ... ,
+"last_price": {"action": "ask", "price": 69485.0},
+...
+"trades": [{"currenty_pair": "btc_jpy", "trade_type": "ask", "price": 69485.0, "currency_pair": "btc_jpy", 
+...
+*/
+
+// close streaming
+stream.close() { (_, res) in
+  print(res)
+}
+
+// reopen streaming
+stream.open() { (_, _) in
+  print("reopened")
+}
+
+// handle errors
+stream.onError() { (err, _) in
+  print(err)
 }
 ```
