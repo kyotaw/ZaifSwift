@@ -1,3 +1,6 @@
 ZaifSwiftTests/Keys.swift
 .DS_Store
-
+Podfile
+Podfile.lock
+Pods/
+ZaifSwift.xcworkspace
