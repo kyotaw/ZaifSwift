@@ -8,6 +8,18 @@ Zaif Exchange API (Ver. 1.05.01) wrappers for Swift
 * SwiftyJSON
 * SwiftWebSocket
 
+## Installation
+You can install ZaifSwift using CocoaPods.  
+Podfile:
+```
+platform :ios, '9.0'
+use_frameworks!
+
+target 'MyProj' do
+    pod 'ZaifSwift'
+end
+```
+
 ## Private APIs
 * Create private api instance
 
