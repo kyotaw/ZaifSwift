@@ -18,35 +18,35 @@ public class Stream {
         
         self.socket.event.open = {
             if let cb = self._onOpen {
-                cb(err: nil, res: nil)
+                cb(nil, nil)
             }
         }
         self.socket.event.close = { (code, reason, wasClean) in
             if let cb = self._onClose {
-                cb(err: nil, res: JSON(["reason": reason]))
+                cb(nil, JSON(["reason": reason]))
             }
         }
         self.socket.event.message = { (res: Any) in
             if let cb = self._onData {
-                cb(err: nil, res: JSON(res as! AnyObject))
+                cb(nil, JSON(res as! AnyObject))
             }
         }
-        self.socket.event.error = { (err: ErrorType) in
+        self.socket.event.error = { (err: Error) in
             let e = err as! WebSocketError
             if let cb = self._onError {
-                cb(err: ZSError(errorType: .UNKNOWN_ERROR, message: e.description), res: nil)
+                cb(ZSError(errorType: .UNKNOWN_ERROR, message: e.description), nil)
             }
         }
-        self.open(openCallback)
+        self.open(callback: openCallback)
     }
     
     public func open(callback: ZSCallback?=nil) {
-        self.onOpen(callback)
+        self.onOpen(callback: callback)
         self.socket.open() // do nothing if socket already opened otherwise reopen.
     }
     
     public func close(callback: ZSCallback?=nil) {
-        self.onClose(callback)
+        self.onClose(callback: callback)
         self.socket.close()
     }
     

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum ZSErrorType : ErrorType {
+public enum ZSErrorType : Error {
     case CONNECTION_ERROR
     case CRYPTION_ERROR
     case INVALID_API_KEY
@@ -16,7 +16,7 @@ public enum ZSErrorType : ErrorType {
     case INVALID_REQUEST
     case INVALID_RESPONSE
     case INVALID_ORDER(message: String)
-    case SEVER_ERROR
+    case SERVER_ERROR
     case PROCESSING_ERROR
     case NONCE_EXCEED_LIMIT
     case NONCE_NOT_INCREMENTED

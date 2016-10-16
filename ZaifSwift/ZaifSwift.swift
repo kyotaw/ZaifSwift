@@ -30,10 +30,10 @@ public enum OrderAction : String {
     case BID = "bid"
 }
 
-public typealias ZSCallback = ((err: ZSError?, res: JSON?) -> Void)
+public typealias ZSCallback = ((_ err: ZSError?, _ res: JSON?) -> Void)
 
 
-public class PrivateApi {
+open class PrivateApi {
     
     public init(apiKey: String, secretKey: String, nonce: NonceProtocol?=nil) {
         self.keys = ApiKeys(apiKey: apiKey, secretKey: secretKey)
@@ -44,59 +44,65 @@ public class PrivateApi {
         }
     }
     
-    public func getInfo(callback: ZSCallback) {
+    open func getInfo(_ callback: @escaping ZSCallback) {
         PrivateResource.getInfo(self.keys, nonce: self.nonce, callback: callback)
     }
     
-    public func trade(order: Order, callback: ZSCallback) {
+    open func trade(_ order: Order, callback: @escaping ZSCallback) {
         do {
             try order.valid()
             order.execute(self.keys, nonce: self.nonce, callback: callback)
         } catch ZSErrorType.INVALID_ORDER(let message) {
-            callback(err: ZSError(errorType: .INVALID_ORDER(message: message), message: message), res: nil)
+            callback(ZSError(errorType: .INVALID_ORDER(message: message), message: message), nil)
         } catch {
-            callback(err: ZSError(errorType: .UNKNOWN_ERROR), res: nil)
+            callback(ZSError(errorType: .UNKNOWN_ERROR), nil)
         }
     }
     
-    public func tradeHistory(query: HistoryQuery, callback: ZSCallback) {
+    open func tradeHistory(_ query: HistoryQuery, callback: @escaping ZSCallback) {
         PrivateResource.tradeHistory(self.keys, nonce: self.nonce, query: query, callback: callback)
     }
     
-    public func activeOrders(currencyPair: CurrencyPair?=nil, callback: ZSCallback) {
+    open func activeOrders(_ currencyPair: CurrencyPair?=nil, callback: @escaping ZSCallback) {
         PrivateResource.activeOrders(self.keys, nonce: self.nonce, currencyPair: currencyPair, callback: callback)
     }
     
-    public func cancelOrder(orderId: Int, callback: ZSCallback) {
+    open func cancelOrder(_ orderId: Int, callback: @escaping ZSCallback) {
         PrivateResource.cancelOrder(self.keys, nonce: self.nonce, orderId: orderId, callback: callback)
     }
     
-    private let keys: ApiKeys
-    private let nonce: NonceProtocol!
+    open var apiKey: String {
+        get {
+            return self.keys.apiKey
+        }
+    }
+    
+    fileprivate let keys: ApiKeys
+    fileprivate let nonce: NonceProtocol!
 }
 
-public class PublicApi {
+open class PublicApi {
     
-    public static func lastPrice(currencyPair: CurrencyPair, callback: ZSCallback) {
+    open static func lastPrice(_ currencyPair: CurrencyPair, callback: @escaping ZSCallback) {
         PublicResource.lastPrice(currencyPair, callback: callback)
     }
 
-    public static func ticker(currencyPair: CurrencyPair, callback: ZSCallback) {
+    open static func ticker(_ currencyPair: CurrencyPair, callback: @escaping ZSCallback) {
         PublicResource.ticker(currencyPair, callback: callback)
     }
     
-    public static func trades(currencyPair: CurrencyPair, callback: ZSCallback) {
+    open static func trades(_ currencyPair: CurrencyPair, callback: @escaping ZSCallback) {
         PublicResource.trades(currencyPair, callback: callback)
     }
     
-    public static func depth(currencyPair: CurrencyPair, callback: ZSCallback) {
+    open static func depth(_ currencyPair: CurrencyPair, callback: @escaping ZSCallback) {
         PublicResource.depth(currencyPair, callback: callback)
     }
 }
 
-public class StreamingApi {
+open class StreamingApi {
     
-    public static func stream(currencyPair: CurrencyPair, openCallback: ZSCallback) -> Stream {
+    open static func stream(_ currencyPair: CurrencyPair, openCallback: @escaping ZSCallback) -> Stream {
         return StreamingResource.stream(currencyPair, openCallback: openCallback)
     }
     

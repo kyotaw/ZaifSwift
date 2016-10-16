@@ -12,7 +12,7 @@ public protocol NonceProtocol {
     func getNonce() throws -> String
 }
 
-public class SerialNonce : NonceProtocol {
+open class SerialNonce : NonceProtocol {
     public init(initialValue: Int64) {
         if initialValue > 0 {
             self.value = initialValue;
@@ -22,7 +22,7 @@ public class SerialNonce : NonceProtocol {
         self.exceedLimit = false
     }
     
-    public func getNonce() throws -> String {
+    open func getNonce() throws -> String {
         if self.exceedLimit {
             throw ZSErrorType.NONCE_EXCEED_LIMIT
         }
@@ -35,22 +35,22 @@ public class SerialNonce : NonceProtocol {
         return v.description
     }
     
-    private var value: Int64
-    private var exceedLimit: Bool
+    fileprivate var value: Int64
+    fileprivate var exceedLimit: Bool
 }
 
 
-public class TimeNonce : NonceProtocol {
+open class TimeNonce : NonceProtocol {
     public init() {
         self.prevValue = 0
     }
     
-    public func getNonce() throws -> String {
+    open func getNonce() throws -> String {
         if self.prevValue == IntMax.max {
             throw ZSErrorType.NONCE_EXCEED_LIMIT
         }
         
-        let now = Int64(NSDate().timeIntervalSince1970)
+        let now = Int64(Date().timeIntervalSince1970)
         if self.prevValue < now {
             self.prevValue = now
             return now.description
@@ -60,5 +60,5 @@ public class TimeNonce : NonceProtocol {
         }
     }
     
-    private var prevValue: Int64
+    fileprivate var prevValue: Int64
 }

@@ -13,19 +13,29 @@ import CryptoSwift
 import Alamofire
 
 
-private func makeQueryString(params: Dictionary<String, String>) -> String {
-    let URL = NSURL(string: PrivateResource.url)!
-    var request = NSMutableURLRequest(URL: URL)
-    request.HTTPMethod = "POST"
-    let encoding = Alamofire.ParameterEncoding.URL
-    (request, _) = encoding.encode(request, parameters: params)
-    return NSString(data: request.HTTPBody!, encoding:NSUTF8StringEncoding)! as String
+private class URLtoEncoding : URLRequestConvertible {
+    func asURLRequest() throws -> URLRequest {
+        let URL = Foundation.URL(string: PrivateResource.url)!
+        var request = URLRequest(url: URL)
+        request.httpMethod = "POST"
+        return request
+    }
+}
+
+private func makeQueryString(_ params: Dictionary<String, String>) -> String {
+    let encoding = Alamofire.URLEncoding()
+    do {
+        let request = try encoding.encode(URLtoEncoding(), with: params)
+        return NSString(data: request.httpBody!, encoding:String.Encoding.utf8.rawValue)! as String
+    } catch {
+        return ""
+    }
 }
 
 
 internal class PrivateResource {
     
-    internal static func getInfo(apiKeys: ApiKeys, nonce: NonceProtocol, callback: ZSCallback) {
+    internal static func getInfo(_ apiKeys: ApiKeys, nonce: NonceProtocol, callback: @escaping ZSCallback) {
         do {
             let nonce = try nonce.getNonce()
             let params = [
@@ -33,17 +43,17 @@ internal class PrivateResource {
                 "method": "get_info",
             ]
             let headers = try self.makeHeaders(params, apiKeys: apiKeys)
-            self.post(params, headers: headers, callback: callback)
+            self.post(params: params, headers: headers, callback: callback)
         } catch ZSErrorType.NONCE_EXCEED_LIMIT {
-            callback(err: ZSError(errorType: .NONCE_EXCEED_LIMIT), res: nil)
+            callback(ZSError(errorType: .NONCE_EXCEED_LIMIT), nil)
         } catch ZSErrorType.CRYPTION_ERROR {
-            callback(err: ZSError(errorType: .CRYPTION_ERROR), res: nil)
+            callback(ZSError(errorType: .CRYPTION_ERROR), nil)
         } catch {
-            callback(err: ZSError(errorType: .UNKNOWN_ERROR), res: nil)
+            callback(ZSError(errorType: .UNKNOWN_ERROR), nil)
         }
     }
     
-    internal static func trade(apiKeys: ApiKeys, nonce: NonceProtocol, order: Order, callback: ZSCallback) {
+    internal static func trade(_ apiKeys: ApiKeys, nonce: NonceProtocol, order: Order, callback: @escaping ZSCallback) {
         do {
             let nonce = try nonce.getNonce()
             var params = [
@@ -58,17 +68,25 @@ internal class PrivateResource {
                 params["limit"] = limit
             }
             let headers = try self.makeHeaders(params, apiKeys: apiKeys)
-            self.post(params, headers: headers, callback: callback)
+            self.post(params: params, headers: headers) { (err, res) in
+                if err != nil {
+                    callback(err, res)
+                } else {
+                    var resCopy = res
+                    resCopy!["return"]["order_price"] = JSON(order.price!)
+                    callback(nil, resCopy)
+                }
+            }
         } catch ZSErrorType.NONCE_EXCEED_LIMIT {
-            callback(err: ZSError(errorType: .NONCE_EXCEED_LIMIT), res: nil)
+            callback(ZSError(errorType: .NONCE_EXCEED_LIMIT), nil)
         } catch ZSErrorType.CRYPTION_ERROR {
-            callback(err: ZSError(errorType: .CRYPTION_ERROR), res: nil)
+            callback(ZSError(errorType: .CRYPTION_ERROR), nil)
         } catch {
-            callback(err: ZSError(errorType: .UNKNOWN_ERROR), res: nil)
+            callback(ZSError(errorType: .UNKNOWN_ERROR), nil)
         }
     }
     
-    internal static func tradeHistory(apiKeys: ApiKeys, nonce: NonceProtocol, query: HistoryQuery, callback: ZSCallback) {
+    internal static func tradeHistory(_ apiKeys: ApiKeys, nonce: NonceProtocol, query: HistoryQuery, callback: @escaping ZSCallback) {
         do {
             let nonce = try nonce.getNonce()
             var params = [
@@ -101,17 +119,17 @@ internal class PrivateResource {
             }
 
             let headers = try self.makeHeaders(params, apiKeys: apiKeys)
-            self.post(params, headers: headers, callback: callback)
+            self.post(params: params, headers: headers, callback: callback)
         } catch ZSErrorType.NONCE_EXCEED_LIMIT {
-            callback(err: ZSError(errorType: .NONCE_EXCEED_LIMIT), res: nil)
+            callback(ZSError(errorType: .NONCE_EXCEED_LIMIT), nil)
         } catch ZSErrorType.CRYPTION_ERROR {
-            callback(err: ZSError(errorType: .CRYPTION_ERROR), res: nil)
+            callback(ZSError(errorType: .CRYPTION_ERROR), nil)
         } catch {
-            callback(err: ZSError(errorType: .UNKNOWN_ERROR), res: nil)
+            callback(ZSError(errorType: .UNKNOWN_ERROR), nil)
         }
     }
     
-    internal static func activeOrders(apiKeys: ApiKeys, nonce: NonceProtocol, currencyPair: CurrencyPair?, callback: ZSCallback) {
+    internal static func activeOrders(_ apiKeys: ApiKeys, nonce: NonceProtocol, currencyPair: CurrencyPair?, callback: @escaping ZSCallback) {
         do {
             let nonce = try nonce.getNonce()
             var params = [
@@ -122,17 +140,17 @@ internal class PrivateResource {
                 params["currency_pair"] = c.rawValue
             }
             let headers = try self.makeHeaders(params, apiKeys: apiKeys)
-            self.post(params, headers: headers, callback: callback)
+            self.post(params: params, headers: headers, callback: callback)
         } catch ZSErrorType.NONCE_EXCEED_LIMIT {
-            callback(err: ZSError(errorType: .NONCE_EXCEED_LIMIT), res: nil)
+            callback(ZSError(errorType: .NONCE_EXCEED_LIMIT), nil)
         } catch ZSErrorType.CRYPTION_ERROR {
-            callback(err: ZSError(errorType: .CRYPTION_ERROR), res: nil)
+            callback(ZSError(errorType: .CRYPTION_ERROR), nil)
         } catch {
-            callback(err: ZSError(errorType: .UNKNOWN_ERROR), res: nil)
+            callback(ZSError(errorType: .UNKNOWN_ERROR), nil)
         }
     }
     
-    internal static func cancelOrder(apiKeys: ApiKeys, nonce: NonceProtocol, orderId: Int, callback: ZSCallback) {
+    internal static func cancelOrder(_ apiKeys: ApiKeys, nonce: NonceProtocol, orderId: Int, callback: @escaping ZSCallback) {
         do {
             let nonce = try nonce.getNonce()
             let params = [
@@ -141,23 +159,23 @@ internal class PrivateResource {
                 "order_id": orderId.description
             ]
             let headers = try self.makeHeaders(params, apiKeys: apiKeys)
-            self.post(params, headers: headers, callback: callback)
+            self.post(params: params, headers: headers, callback: callback)
         } catch ZSErrorType.NONCE_EXCEED_LIMIT {
-            callback(err: ZSError(errorType: .NONCE_EXCEED_LIMIT), res: nil)
+            callback(ZSError(errorType: .NONCE_EXCEED_LIMIT), nil)
         } catch ZSErrorType.CRYPTION_ERROR {
-            callback(err: ZSError(errorType: .CRYPTION_ERROR), res: nil)
+            callback(ZSError(errorType: .CRYPTION_ERROR), nil)
         } catch {
-            callback(err: ZSError(errorType: .UNKNOWN_ERROR), res: nil)
+            callback(ZSError(errorType: .UNKNOWN_ERROR), nil)
         }
     }
 
-    private static func makeHeaders(params: Dictionary<String, String>, apiKeys: ApiKeys) throws -> Dictionary<String, String> {
+    internal static func makeHeaders(_ params: Dictionary<String, String>, apiKeys: ApiKeys) throws -> Dictionary<String, String> {
         var headers = [
             "Key": apiKeys.apiKey
         ]
         do {
             let query = makeQueryString(params).utf8.map({$0})
-            let hmac: Array<UInt8> = try Authenticator.HMAC(key: apiKeys.secretKey.utf8.map({$0}), variant: .sha512).authenticate(query)
+            let hmac: Array<UInt8> = try HMAC(key: apiKeys.secretKey.utf8.map({$0}), variant: .sha512).authenticate(query)
             headers["Sign"] = hmac.toHexString()
         } catch {
             throw ZSErrorType.CRYPTION_ERROR
@@ -166,48 +184,49 @@ internal class PrivateResource {
         return headers
     }
     
-    private static func post(
+    internal static func post(
         params: Dictionary<String, String>,
         headers: Dictionary<String, String>,
-        callback: ((err: ZSError?, res: JSON?) -> Void)) {
+        callback: @escaping ((_ err: ZSError?, _ res: JSON?) -> Void)) {
         
         
-        Alamofire.request(.POST, PrivateResource.url, parameters: params, headers: headers)
-            .responseJSON(queue: dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+        Alamofire.request(PrivateResource.url, method: .post, parameters: params, headers: headers)
+            .responseJSON(queue: DispatchQueue.global(qos: DispatchQoS.QoSClass.default
+            )) {
                 response in
                 
                 switch response.result {
-                case .Failure(let error):
-                    callback(err: ZSError(errorType: .CONNECTION_ERROR, message: error.domain), res: nil)
+                case .failure(_):
+                    callback(ZSError(errorType: .CONNECTION_ERROR), nil)
                     return
-                case .Success:
+                case .success:
                     let data = JSON(response.result.value! as AnyObject)
                     guard let status = data["success"].int else {
-                        callback(err: ZSError(errorType: .INVALID_RESPONSE), res: nil)
+                        callback(ZSError(errorType: .INVALID_RESPONSE), nil)
                         return
                     }
                     if status == 0 {
                         let message = data["error"].stringValue
                         switch message {
                         case "no data found for the key":
-                            callback(err: ZSError(errorType: .INVALID_API_KEY, message: message), res: data)
+                            callback(ZSError(errorType: .INVALID_API_KEY, message: message), data)
                         case "signature mismatch":
-                            callback(err: ZSError(errorType: .INVALID_SIGNATURE, message: message), res: data)
+                            callback(ZSError(errorType: .INVALID_SIGNATURE, message: message), data)
                         case "api key dont have info permission":
-                            callback(err: ZSError(errorType: .INFO_API_NO_PERMISSION, message: message), res: data)
+                            callback(ZSError(errorType: .INFO_API_NO_PERMISSION, message: message), data)
                         case "api key dont have trade permission":
-                            callback(err: ZSError(errorType: .TRADE_API_NO_PERMISSION, message: message), res: data)
+                            callback(ZSError(errorType: .TRADE_API_NO_PERMISSION, message: message), data)
                         case "api key dont have withdraw permission":
-                            callback(err: ZSError(errorType: .WITHDRAW_API_NO_PERMISSION, message: message), res: data)
+                            callback(ZSError(errorType: .WITHDRAW_API_NO_PERMISSION, message: message), data)
                         case "nonce out of range":
-                            callback(err: ZSError(errorType: .NONCE_EXCEED_LIMIT, message: message), res: data)
+                            callback(ZSError(errorType: .NONCE_EXCEED_LIMIT, message: message), data)
                         case "nonce not incremented":
-                            callback(err: ZSError(errorType: .NONCE_NOT_INCREMENTED, message: message), res: data)
+                            callback(ZSError(errorType: .NONCE_NOT_INCREMENTED, message: message), data)
                         default:
-                            callback(err: ZSError(errorType: .PROCESSING_ERROR, message: message), res: data)
+                            callback(ZSError(errorType: .PROCESSING_ERROR, message: message), data)
                         }
                     } else {
-                        callback(err: nil, res: data)
+                        callback(nil, data)
                     }
                 }
             }
@@ -219,35 +238,35 @@ internal class PrivateResource {
 
 internal class PublicResource {
     
-    internal static func lastPrice(currencyPair: CurrencyPair, callback: ZSCallback) {
-        let url = [PublicResource.url, "last_price", currencyPair.rawValue].joinWithSeparator("/")
+    internal static func lastPrice(_ currencyPair: CurrencyPair, callback: @escaping ZSCallback) {
+        let url = [PublicResource.url, "last_price", currencyPair.rawValue].joined(separator: "/")
         self.get(url, callback: callback)
     }
     
-    internal static func ticker(currencyPair: CurrencyPair, callback: ZSCallback) {
-        let url = [PublicResource.url, "ticker", currencyPair.rawValue].joinWithSeparator("/")
+    internal static func ticker(_ currencyPair: CurrencyPair, callback: @escaping ZSCallback) {
+        let url = [PublicResource.url, "ticker", currencyPair.rawValue].joined(separator: "/")
         self.get(url, callback: callback)
     }
     
-    internal static func trades(currencyPair: CurrencyPair, callback: ZSCallback) {
-        let url = [PublicResource.url, "trades", currencyPair.rawValue].joinWithSeparator("/")
+    internal static func trades(_ currencyPair: CurrencyPair, callback: @escaping ZSCallback) {
+        let url = [PublicResource.url, "trades", currencyPair.rawValue].joined(separator: "/")
         self.get(url, callback: callback)
     }
     
-    internal static func depth(currencyPair: CurrencyPair, callback: ZSCallback) {
-        let url = [PublicResource.url, "depth", currencyPair.rawValue].joinWithSeparator("/")
+    internal static func depth(_ currencyPair: CurrencyPair, callback: @escaping ZSCallback) {
+        let url = [PublicResource.url, "depth", currencyPair.rawValue].joined(separator: "/")
         self.get(url, callback: callback)
     }
 
-    private static func get(url: String, callback: ((err: ZSError?, res: JSON?) -> Void)) {
-        Alamofire.request(.GET, url).responseJSON() { response in
+    private static func get(_ url: String, callback: @escaping ((_ err: ZSError?, _ res: JSON?) -> Void)) {
+        Alamofire.request(PublicResource.url).responseJSON() { response in
             switch response.result {
-            case .Failure(let error):
-                callback(err: ZSError(errorType: .CONNECTION_ERROR, message: error.domain), res: nil)
+            case .failure(_):
+                callback(ZSError(errorType: .CONNECTION_ERROR), nil)
                 return
-            case .Success:
+            case .success:
                 let data = JSON(response.result.value! as AnyObject)
-                callback(err: nil, res: data)
+                callback(nil, data)
             }
         }
     }
@@ -258,12 +277,12 @@ internal class PublicResource {
 
 internal class StreamingResource {
     
-    internal static func stream(currencyPair: CurrencyPair, openCallback: ZSCallback?=nil) -> Stream {
+    internal static func stream(_ currencyPair: CurrencyPair, openCallback: ZSCallback?=nil) -> Stream {
         let params = [
             "currency_pair": currencyPair.rawValue
         ]
         let query = makeQueryString(params)
-        let url = [StreamingResource.url, query].joinWithSeparator("?")
+        let url = [StreamingResource.url, query].joined(separator: "?")
         return Stream(url: url, openCallback: openCallback)
     }
     
