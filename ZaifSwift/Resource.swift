@@ -259,7 +259,7 @@ internal class PublicResource {
     }
 
     private static func get(_ url: String, callback: @escaping ((_ err: ZSError?, _ res: JSON?) -> Void)) {
-        Alamofire.request(PublicResource.url).responseJSON() { response in
+        Alamofire.request(url).responseJSON() { response in
             switch response.result {
             case .failure(_):
                 callback(ZSError(errorType: .CONNECTION_ERROR), nil)
