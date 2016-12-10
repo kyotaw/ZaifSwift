@@ -10,6 +10,7 @@ import Foundation
 
 public protocol NonceProtocol {
     func getNonce() throws -> String
+    func countUp(value: Int) throws
 }
 
 open class SerialNonce : NonceProtocol {
@@ -35,6 +36,10 @@ open class SerialNonce : NonceProtocol {
         return v.description
     }
     
+    open func countUp(value: Int) {
+        self.value += value
+    }
+    
     fileprivate var value: Int64
     fileprivate var exceedLimit: Bool
 }
@@ -57,6 +62,14 @@ open class TimeNonce : NonceProtocol {
         } else {
             self.prevValue += 1
             return self.prevValue.description
+        }
+    }
+    
+    open func countUp(value: Int) {
+        for i in (0 ..< value) {
+            do {
+                try! self.getNonce()
+            }
         }
     }
     

@@ -48,9 +48,11 @@ open class PrivateApi {
         PrivateResource.getInfo(self.keys, nonce: self.nonce, callback: callback)
     }
     
-    open func trade(_ order: Order, callback: @escaping ZSCallback) {
+    open func trade(_ order: Order, validate: Bool=true, callback: @escaping ZSCallback) {
         do {
-            try order.valid()
+            if validate {
+                try order.valid()
+            }
             order.execute(self.keys, nonce: self.nonce, callback: callback)
         } catch ZSErrorType.INVALID_ORDER(let message) {
             callback(ZSError(errorType: .INVALID_ORDER(message: message), message: message), nil)

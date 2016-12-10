@@ -28,7 +28,13 @@ public class Stream {
         }
         self.socket.event.message = { (res: Any) in
             if let cb = self._onData {
-                cb(nil, JSON(res as! AnyObject))
+                let j = JSON(res as! AnyObject)
+                if let dataFromString = j.rawString()?.data(using: .utf8, allowLossyConversion: false) {
+                    let json = JSON(data: dataFromString)
+                    cb(nil, json)
+                } else {
+                    cb(ZSError(errorType: .UNKNOWN_ERROR, message: "failed to convert res to json"), nil)
+                }
             }
         }
         self.socket.event.error = { (err: Error) in

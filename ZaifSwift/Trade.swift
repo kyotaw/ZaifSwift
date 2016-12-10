@@ -165,6 +165,22 @@ public class BtcJpyOrder : Order {
         }
     }
     
+    override var amountString: String {
+        get {
+            let str = amount.description
+            let pos = str.characters.enumerated().filter{ (index, c) in c == "."}.first?.0
+            guard let p = pos else {
+                return str
+            }
+            var end = p + 5
+            let len = str.characters.count
+            if len < end {
+                end = len
+            }
+            return str.substring(to: str.index(str.startIndex, offsetBy: end))
+        }
+    }
+    
     override var priceString: String {
         get {
             if let p = self.price {
