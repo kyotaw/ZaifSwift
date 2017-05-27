@@ -73,9 +73,9 @@ open class TimeNonce : NonceProtocol {
     }
     
     open func countUp(value: Int) {
-        for i in (0 ..< value) {
+        for _ in (0 ..< value) {
             do {
-                try! self.getNonce()
+                let _ = try! self.getNonce()
             }
         }
     }

@@ -28,7 +28,7 @@ public class Stream {
         }
         self.socket.event.message = { (res: Any) in
             if let cb = self._onData {
-                let j = JSON(res as! AnyObject)
+                let j = JSON(res as AnyObject)
                 if let dataFromString = j.rawString()?.data(using: .utf8, allowLossyConversion: false) {
                     let json = JSON(data: dataFromString)
                     cb(nil, json)

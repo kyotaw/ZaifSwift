@@ -274,7 +274,7 @@ public class BuyMonaInJpyOrder : MonaJpyOrder {
     
     override func marketOrder(_ apiKeys: ApiKeys, nonce: NonceProtocol, callback: @escaping ZSCallback) {
         PublicApi.ticker(self.currencyPair) { (err, res) in
-            if let e = err {
+            if err != nil {
                 callback(err, nil)
             } else {
                 let marketPrice = res!["bid"].doubleValue
@@ -294,7 +294,7 @@ class BuyMonaInBtcOrder : MonaBtcOrder {
     
     override func marketOrder(_ apiKeys: ApiKeys, nonce: NonceProtocol, callback: @escaping ZSCallback) {
         PublicApi.ticker(self.currencyPair) { (err, res) in
-            if let e = err {
+            if err != nil {
                 callback(err, nil)
             } else {
                 let marketPrice = res!["bid"].doubleValue
@@ -314,7 +314,7 @@ public class SellBtcForJpyOrder : BtcJpyOrder {
     
     override func marketOrder(_ apiKeys: ApiKeys, nonce: NonceProtocol, callback: @escaping ZSCallback) {
         PublicApi.ticker(self.currencyPair) { (err, res) in
-            if let e = err {
+            if err != nil {
                 callback(err, nil)
             } else {
                 let marketPrice = res!["ask"].doubleValue
@@ -334,7 +334,7 @@ public class SellMonaForJpyOrder : MonaJpyOrder {
     
     override func marketOrder(_ apiKeys: ApiKeys, nonce: NonceProtocol, callback: @escaping ZSCallback) {
         PublicApi.ticker(self.currencyPair) { (err, res) in
-            if let e = err {
+            if err != nil {
                 callback(err, nil)
             } else {
                 let marketPrice = res!["ask"].doubleValue
@@ -354,7 +354,7 @@ public class SellMonaForBtcOrder : MonaBtcOrder {
     
     override func marketOrder(_ apiKeys: ApiKeys, nonce: NonceProtocol, callback: @escaping ZSCallback) {
         PublicApi.ticker(self.currencyPair) { (err, res) in
-            if let e = err {
+            if err != nil {
                 callback(err, nil)
             } else {
                 let marketPrice = res!["ask"].doubleValue
