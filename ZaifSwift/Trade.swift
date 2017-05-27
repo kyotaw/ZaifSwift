@@ -2,8 +2,8 @@
 //  Trade.swift
 //  ZaifSwift
 //
-//  Created by 渡部郷太 on 6/26/16.
-//  Copyright © 2016 watanabe kyota. All rights reserved.
+//  Created by Kyota Watanabe on 6/26/16.
+//  Copyright © 2016 Kyota Watanabe. All rights reserved.
 //
 
 import Foundation
@@ -120,7 +120,7 @@ public class Order {
         callback(ZSError(errorType: .UNKNOWN_ERROR, message: "not implemented"), nil)
     }
     
-    var priceString: String {
+    open var priceString: String {
         get {
             if let p = self.price {
                 return p.description
@@ -129,8 +129,8 @@ public class Order {
             }
         }
     }
-    var amountString: String { get { return self.amount.description } }
-    var limitString: String? { get { return self.limit == nil ? nil : self.limit!.description } }
+    open var amountString: String { get { return self.amount.description } }
+    open var limitString: String? { get { return self.limit == nil ? nil : self.limit!.description } }
     
     public let currencyPair: CurrencyPair
     public let action: OrderAction
@@ -165,7 +165,7 @@ public class BtcJpyOrder : Order {
         }
     }
     
-    override var amountString: String {
+    open override var amountString: String {
         get {
             let str = amount.description
             let pos = str.characters.enumerated().filter{ (index, c) in c == "."}.first?.0
@@ -181,7 +181,7 @@ public class BtcJpyOrder : Order {
         }
     }
     
-    override var priceString: String {
+    open override var priceString: String {
         get {
             if let p = self.price {
                 return Int(p).description
@@ -190,7 +190,7 @@ public class BtcJpyOrder : Order {
             }
         }
     }
-    override var limitString: String? { get { return self.limit == nil ? nil : Int(self.limit!).description } }
+    open override var limitString: String? { get { return self.limit == nil ? nil : Int(self.limit!).description } }
 }
 
 public class MonaJpyOrder : Order {
@@ -217,7 +217,7 @@ public class MonaJpyOrder : Order {
         }
     }
     
-    override var amountString: String { get { return Int(self.amount).description } }
+    open override var amountString: String { get { return Int(self.amount).description } }
 }
 
 public class MonaBtcOrder : Order {
@@ -244,7 +244,7 @@ public class MonaBtcOrder : Order {
         }
     }
     
-    override var amountString: String { get { return Int(self.amount).description } }
+    open override var amountString: String { get { return Int(self.amount).description } }
 }
 
 public class BuyBtcInJpyOrder : BtcJpyOrder {
@@ -254,7 +254,7 @@ public class BuyBtcInJpyOrder : BtcJpyOrder {
     
     override func marketOrder(_ apiKeys: ApiKeys, nonce: NonceProtocol, callback: @escaping ZSCallback) {
         PublicApi.ticker(self.currencyPair) { (err, res) in
-            if let e = err {
+            if err != nil {
                 callback(err, nil)
             } else {
                 let marketPrice = res!["bid"].doubleValue

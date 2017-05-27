@@ -2,8 +2,8 @@
 //  Nonce.swift
 //  ZaifSwift
 //
-//  Created by 渡部郷太 on 6/24/16.
-//  Copyright © 2016 watanabe kyota. All rights reserved.
+//  Created by Kyota Watanabe on 6/24/16.
+//  Copyright © 2016 Kyota Watanabe. All rights reserved.
 //
 
 import Foundation
@@ -11,6 +11,8 @@ import Foundation
 public protocol NonceProtocol {
     func getNonce() throws -> String
     func countUp(value: Int) throws
+    
+    var currentValue: Int64 { get }
 }
 
 open class SerialNonce : NonceProtocol {
@@ -40,14 +42,19 @@ open class SerialNonce : NonceProtocol {
         self.value += value
     }
     
+    open var currentValue: Int64 { get { return self.value } }
+    
     fileprivate var value: Int64
     fileprivate var exceedLimit: Bool
 }
 
 
 open class TimeNonce : NonceProtocol {
-    public init() {
+    public init(initialValue: Int64=0) {
         self.prevValue = 0
+        if initialValue > 0 {
+            self.prevValue = initialValue;
+        }
     }
     
     open func getNonce() throws -> String {
@@ -60,7 +67,7 @@ open class TimeNonce : NonceProtocol {
             self.prevValue = now
             return now.description
         } else {
-            self.prevValue += 1
+            self.prevValue += 5
             return self.prevValue.description
         }
     }
@@ -72,6 +79,8 @@ open class TimeNonce : NonceProtocol {
             }
         }
     }
+    
+    open var currentValue: Int64 { get { return self.prevValue } }
     
     fileprivate var prevValue: Int64
 }

@@ -16,6 +16,7 @@ public enum ZSErrorType : Error {
     case INVALID_REQUEST
     case INVALID_RESPONSE
     case INVALID_ORDER(message: String)
+    case INSUFFICIENT_FUNDS
     case SERVER_ERROR
     case PROCESSING_ERROR
     case NONCE_EXCEED_LIMIT

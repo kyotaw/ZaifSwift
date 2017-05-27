@@ -2,8 +2,8 @@
 //  ZaifSwift.swift
 //  ZaifSwift
 //
-//  Created by 渡部郷太 on 6/24/16.
-//  Copyright © 2016 watanabe kyota. All rights reserved.
+//  Created by Kyota Watanabe on 6/24/16.
+//  Copyright © 2016 Kyota Watanabe. All rights reserved.
 //
 
 import Foundation
@@ -23,6 +23,15 @@ public enum CurrencyPair : String {
     case MONA_JPY = "mona_jpy"
     case MONA_BTC = "mona_btc"
     case XEM_JPY = "xem_jpy"
+    
+    public var orderUnit: Double {
+        switch self {
+        case .BTC_JPY: return 0.0001
+        case .MONA_JPY: return 0.1
+        case .MONA_BTC: return 0.00000001
+        case .XEM_JPY: return 0.1
+        }
+    }
 }
 
 public enum OrderAction : String {
@@ -46,6 +55,10 @@ open class PrivateApi {
     
     open func getInfo(_ callback: @escaping ZSCallback) {
         PrivateResource.getInfo(self.keys, nonce: self.nonce, callback: callback)
+    }
+    
+    open func getInfo2(_ callback: @escaping ZSCallback) {
+        PrivateResource.getInfo2(self.keys, nonce: self.nonce, callback: callback)
     }
     
     open func trade(_ order: Order, validate: Bool=true, callback: @escaping ZSCallback) {
@@ -73,10 +86,42 @@ open class PrivateApi {
         PrivateResource.cancelOrder(self.keys, nonce: self.nonce, orderId: orderId, callback: callback)
     }
     
-    open var apiKey: String {
-        get {
-            return self.keys.apiKey
+    open func searchValidNonce(count: Int=10, step: Int=100, callback: @escaping (ZSError?) -> Void) {
+        self.getInfo2() { (err, _) in
+            if let e = err {
+                switch e.errorType {
+                case .NONCE_NOT_INCREMENTED:
+                    do {
+                        try self.nonce.countUp(value: step)
+                    } catch {
+                        callback(e)
+                    }
+                    if count == 0 {
+                        callback(e)
+                    } else {
+                        sleep(1)
+                        self.searchValidNonce(count: count - 1, callback: callback)
+                    }
+                default:
+                    callback(e)
+                }
+                
+            } else {
+                callback(nil)
+            }
         }
+    }
+    
+    open var apiKey: String {
+        get { return self.keys.apiKey }
+    }
+    
+    open var secretKey: String {
+        get { return self.keys.secretKey }
+    }
+    
+    open var nonceValue: Int64 {
+        get { return self.nonce.currentValue }
     }
     
     fileprivate let keys: ApiKeys

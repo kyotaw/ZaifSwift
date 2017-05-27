@@ -53,6 +53,24 @@ internal class PrivateResource {
         }
     }
     
+    internal static func getInfo2(_ apiKeys: ApiKeys, nonce: NonceProtocol, callback: @escaping ZSCallback) {
+        do {
+            let nonce = try nonce.getNonce()
+            let params = [
+                "nonce": nonce,
+                "method": "get_info2",
+                ]
+            let headers = try self.makeHeaders(params, apiKeys: apiKeys)
+            self.post(params: params, headers: headers, callback: callback)
+        } catch ZSErrorType.NONCE_EXCEED_LIMIT {
+            callback(ZSError(errorType: .NONCE_EXCEED_LIMIT), nil)
+        } catch ZSErrorType.CRYPTION_ERROR {
+            callback(ZSError(errorType: .CRYPTION_ERROR), nil)
+        } catch {
+            callback(ZSError(errorType: .UNKNOWN_ERROR), nil)
+        }
+    }
+    
     internal static func trade(_ apiKeys: ApiKeys, nonce: NonceProtocol, order: Order, callback: @escaping ZSCallback) {
         do {
             let nonce = try nonce.getNonce()
@@ -212,6 +230,8 @@ internal class PrivateResource {
                             callback(ZSError(errorType: .INVALID_API_KEY, message: message), data)
                         case "signature mismatch":
                             callback(ZSError(errorType: .INVALID_SIGNATURE, message: message), data)
+                        case "insufficient funds":
+                            callback(ZSError(errorType: .INSUFFICIENT_FUNDS, message: message), data)
                         case "api key dont have info permission":
                             callback(ZSError(errorType: .INFO_API_NO_PERMISSION, message: message), data)
                         case "api key dont have trade permission":
@@ -265,7 +285,11 @@ internal class PublicResource {
                 callback(ZSError(errorType: .CONNECTION_ERROR), nil)
                 return
             case .success:
-                let data = JSON(response.result.value! as AnyObject)
+                guard let value = response.result.value else {
+                    callback(ZSError(errorType: .CONNECTION_ERROR), nil)
+                    return
+                }
+                let data = JSON(value as AnyObject)
                 callback(nil, data)
             }
         }
